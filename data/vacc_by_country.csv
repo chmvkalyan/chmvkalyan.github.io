@@ -1,0 +1,232 @@
+,location,date,total_vaccinations,continent
+0,Afghanistan,2021-07-30,1381416.0,Asia
+1,Africa,2021-07-30,68526705.0,
+2,Albania,2021-07-30,1138771.0,Europe
+3,Algeria,2021-07-30,3421279.0,Africa
+4,Andorra,2021-07-30,82349.0,Europe
+5,Angola,2021-07-30,1592537.0,Africa
+6,Anguilla,2021-07-23,18001.0,North America
+7,Antigua and Barbuda,2021-07-30,68715.0,North America
+8,Argentina,2021-07-30,31471074.0,South America
+9,Armenia,2021-07-30,152529.0,Asia
+10,Aruba,2021-07-30,137598.0,North America
+11,Asia,2021-07-30,2617298521.0,
+12,Australia,2021-07-30,12005978.0,Oceania
+13,Austria,2021-07-30,9657308.0,Europe
+14,Azerbaijan,2021-07-30,4885572.0,Asia
+15,Bahamas,2021-07-30,104521.0,North America
+16,Bahrain,2021-07-30,2297602.0,Asia
+17,Bangladesh,2021-07-30,11734447.0,Asia
+18,Barbados,2021-07-30,174129.0,North America
+19,Belarus,2021-07-30,2194993.0,Europe
+20,Belgium,2021-07-30,14302977.0,Europe
+21,Belize,2021-07-30,175735.0,North America
+22,Benin,2021-07-30,57886.0,Africa
+23,Bermuda,2021-07-30,82870.0,North America
+24,Bhutan,2021-07-30,488872.0,Asia
+25,Bolivia,2021-07-30,4426954.0,South America
+26,Bonaire Sint Eustatius and Saba,2021-04-09,7391.0,North America
+27,Bosnia and Herzegovina,2021-07-30,611641.0,Europe
+28,Botswana,2021-07-30,331408.0,Africa
+29,Brazil,2021-07-30,140169214.0,South America
+30,British Virgin Islands,2021-07-23,26501.0,North America
+31,Brunei,2021-07-30,150102.0,Asia
+32,Bulgaria,2021-07-30,2024943.0,Europe
+33,Burkina Faso,2021-07-30,37120.0,Africa
+34,Burundi,2021-07-30,,Africa
+35,Cambodia,2021-07-30,11802138.0,Asia
+36,Cameroon,2021-07-30,331875.0,Africa
+37,Canada,2021-07-30,49060682.0,North America
+38,Cape Verde,2021-07-30,159446.0,Africa
+39,Cayman Islands,2021-07-30,97707.0,North America
+40,Central African Republic,2021-07-30,93790.0,Africa
+41,Chad,2021-07-30,29980.0,Africa
+42,Chile,2021-07-30,25479218.0,South America
+43,China,2021-07-30,1637395000.0,Asia
+44,Colombia,2021-07-30,26515327.0,South America
+45,Comoros,2021-07-30,125960.0,Africa
+46,Congo,2021-07-30,198698.0,Africa
+47,Cook Islands,2021-07-20,20509.0,Oceania
+48,Costa Rica,2021-07-30,3193895.0,North America
+49,Cote d'Ivoire,2021-07-30,959349.0,Africa
+50,Croatia,2021-07-30,3068657.0,Europe
+51,Cuba,2021-07-30,9169319.0,North America
+52,Curacao,2021-07-30,174524.0,North America
+53,Cyprus,2021-07-30,980404.0,Europe
+54,Czechia,2021-07-30,10313939.0,Europe
+55,Democratic Republic of Congo,2021-07-30,81384.0,Africa
+56,Denmark,2021-07-30,7277777.0,Europe
+57,Djibouti,2021-07-30,26796.0,Africa
+58,Dominica,2021-07-30,40450.0,North America
+59,Dominican Republic,2021-07-30,10060830.0,North America
+60,Ecuador,2021-07-30,10929785.0,South America
+61,Egypt,2021-07-30,5337506.0,Africa
+62,El Salvador,2021-07-30,4309189.0,North America
+63,Equatorial Guinea,2021-07-30,301413.0,Africa
+64,Eritrea,2021-07-30,,Africa
+65,Estonia,2021-07-30,1130877.0,Europe
+66,Eswatini,2021-07-30,65667.0,Africa
+67,Ethiopia,2021-07-30,2216338.0,Africa
+68,Europe,2021-07-30,645764153.0,
+69,European Union,2021-07-30,466933571.0,
+70,Faeroe Islands,2021-07-28,63660.0,Europe
+71,Falkland Islands,2021-04-14,4407.0,South America
+72,Fiji,2021-07-30,538439.0,Oceania
+73,Finland,2021-07-30,5614944.0,Europe
+74,France,2021-07-30,72673342.0,Europe
+75,French Polynesia,2021-07-27,154037.0,Oceania
+76,Gabon,2021-07-30,87181.0,Africa
+77,Gambia,2021-07-30,43557.0,Africa
+78,Georgia,2021-07-30,464875.0,Asia
+79,Germany,2021-07-30,92054374.0,Europe
+80,Ghana,2021-07-30,1271393.0,Africa
+81,Gibraltar,2021-07-26,78406.0,Europe
+82,Greece,2021-07-30,10475917.0,Europe
+83,Greenland,2021-07-30,62050.0,North America
+84,Grenada,2021-07-30,36524.0,North America
+85,Guatemala,2021-07-30,2028885.0,North America
+86,Guernsey,2021-07-30,92775.0,Europe
+87,Guinea,2021-07-30,804122.0,Africa
+88,Guinea-Bissau,2021-07-30,25225.0,Africa
+89,Guyana,2021-07-30,382957.0,South America
+90,Haiti,2021-07-30,4526.0,North America
+91,Honduras,2021-07-30,1912232.0,North America
+92,Hong Kong,2021-07-30,5598077.0,Asia
+93,Hungary,2021-07-30,10155466.0,Europe
+94,Iceland,2021-07-30,470374.0,Europe
+95,India,2021-07-30,461518479.0,Asia
+96,Indonesia,2021-07-30,66952414.0,Asia
+97,International,2021-07-30,,
+98,Iran,2021-07-30,10168674.0,Asia
+99,Iraq,2021-07-30,1087866.0,Asia
+100,Ireland,2021-07-30,5823011.0,Europe
+101,Isle of Man,2021-07-30,123420.0,Europe
+102,Israel,2021-07-30,11154216.0,Asia
+103,Italy,2021-07-30,68186823.0,Europe
+104,Jamaica,2021-07-30,300902.0,North America
+105,Japan,2021-07-30,84009438.0,Asia
+106,Jersey,2021-07-25,140245.0,Europe
+107,Jordan,2021-07-30,5173865.0,Asia
+108,Kazakhstan,2021-07-30,8953785.0,Asia
+109,Kenya,2021-07-30,1707734.0,Africa
+110,Kiribati,2021-07-30,,Oceania
+111,Kosovo,2021-07-30,388073.0,Europe
+112,Kuwait,2021-07-30,2375455.0,Asia
+113,Kyrgyzstan,2021-07-30,562528.0,Asia
+114,Laos,2021-07-30,1895038.0,Asia
+115,Latvia,2021-07-30,1347468.0,Europe
+116,Lebanon,2021-07-30,1944927.0,Asia
+117,Lesotho,2021-07-30,72948.0,Africa
+118,Liberia,2021-07-30,95423.0,Africa
+119,Libya,2021-07-30,546745.0,Africa
+120,Liechtenstein,2021-07-30,39205.0,Europe
+121,Lithuania,2021-07-30,2650859.0,Europe
+122,Luxembourg,2021-07-30,702091.0,Europe
+123,Macao,2021-07-30,505332.0,Asia
+124,Madagascar,2021-07-30,197001.0,Africa
+125,Malawi,2021-07-30,504195.0,Africa
+126,Malaysia,2021-07-30,20014549.0,Asia
+127,Maldives,2021-07-30,583651.0,Asia
+128,Mali,2021-07-30,196862.0,Africa
+129,Malta,2021-07-30,758252.0,Europe
+130,Marshall Islands,2021-07-30,,Oceania
+131,Mauritania,2021-07-30,193776.0,Africa
+132,Mauritius,2021-07-30,1156482.0,Africa
+133,Mexico,2021-07-30,65631680.0,North America
+134,Micronesia (country),2021-07-30,,Oceania
+135,Moldova,2021-07-30,1034428.0,Europe
+136,Monaco,2021-07-30,40630.0,Europe
+137,Mongolia,2021-07-30,4154534.0,Asia
+138,Montenegro,2021-07-30,327600.0,Europe
+139,Montserrat,2021-07-23,2730.0,North America
+140,Morocco,2021-07-30,23649478.0,Africa
+141,Mozambique,2021-07-30,691040.0,Africa
+142,Myanmar,2021-07-30,3500000.0,Asia
+143,Namibia,2021-07-30,204103.0,Africa
+144,Nauru,2021-07-27,14784.0,Oceania
+145,Nepal,2021-07-30,5199536.0,Asia
+146,Netherlands,2021-07-30,19751575.0,Europe
+147,New Caledonia,2021-07-27,125742.0,Oceania
+148,New Zealand,2021-07-30,1759154.0,Oceania
+149,Nicaragua,2021-07-30,415640.0,North America
+150,Niger,2021-07-30,423335.0,Africa
+151,Nigeria,2021-07-30,3938945.0,Africa
+152,Niue,2021-07-06,1216.0,Oceania
+153,North America,2021-07-30,495344084.0,
+154,North Macedonia,2021-07-30,862426.0,Europe
+155,Northern Cyprus,2021-06-27,194782.0,Asia
+156,Norway,2021-07-30,5366042.0,Europe
+157,Oceania,2021-07-30,14911930.0,
+158,Oman,2021-07-30,1887421.0,Asia
+159,Pakistan,2021-07-30,28743225.0,Asia
+160,Palestine,2021-07-30,1001415.0,Asia
+161,Panama,2021-07-30,2327152.0,North America
+162,Papua New Guinea,2021-07-30,88343.0,Oceania
+163,Paraguay,2021-07-30,2123997.0,South America
+164,Peru,2021-07-30,12521783.0,South America
+165,Philippines,2021-07-30,19359927.0,Asia
+166,Pitcairn,2021-07-27,77.0,Oceania
+167,Poland,2021-07-30,34334259.0,Europe
+168,Portugal,2021-07-30,12027304.0,Europe
+169,Qatar,2021-07-30,3775560.0,Asia
+170,Romania,2021-07-30,9394911.0,Europe
+171,Russia,2021-07-30,60996545.0,Europe
+172,Rwanda,2021-07-30,646909.0,Africa
+173,Saint Helena,2021-05-05,7892.0,Africa
+174,Saint Kitts and Nevis,2021-07-30,43415.0,North America
+175,Saint Lucia,2021-07-30,56839.0,North America
+176,Saint Vincent and the Grenadines,2021-07-30,25603.0,North America
+177,Samoa,2021-07-30,81114.0,Oceania
+178,San Marino,2021-07-30,45206.0,Europe
+179,Sao Tome and Principe,2021-07-30,43960.0,Africa
+180,Saudi Arabia,2021-07-30,26567950.0,Asia
+181,Senegal,2021-07-30,906557.0,Africa
+182,Serbia,2021-07-30,5530791.0,Europe
+183,Seychelles,2021-07-30,141435.0,Africa
+184,Sierra Leone,2021-07-30,225380.0,Africa
+185,Singapore,2021-07-30,7429918.0,Asia
+186,Sint Maarten (Dutch part),2021-07-23,44042.0,North America
+187,Slovakia,2021-07-30,4219810.0,Europe
+188,Slovenia,2021-07-30,1727783.0,Europe
+189,Solomon Islands,2021-07-30,45101.0,Oceania
+190,Somalia,2021-07-30,249790.0,Africa
+191,South Africa,2021-07-30,7297912.0,Africa
+192,South America,2021-07-30,263051763.0,
+193,South Korea,2021-07-30,24661446.0,Asia
+194,South Sudan,2021-07-30,56989.0,Africa
+195,Spain,2021-07-30,55713142.0,Europe
+196,Sri Lanka,2021-07-30,11242718.0,Asia
+197,Sudan,2021-07-30,810560.0,Africa
+198,Suriname,2021-07-30,244378.0,South America
+199,Sweden,2021-07-30,10565358.0,Europe
+200,Switzerland,2021-07-30,8938866.0,Europe
+201,Syria,2021-07-30,131221.0,Asia
+202,Taiwan,2021-07-30,8088871.0,Asia
+203,Tajikistan,2021-07-30,492066.0,Asia
+204,Tanzania,2021-07-30,,Africa
+205,Thailand,2021-07-30,15960778.0,Asia
+206,Timor,2021-07-30,363269.0,Asia
+207,Togo,2021-07-30,454208.0,Africa
+208,Tonga,2021-07-27,39511.0,Oceania
+209,Trinidad and Tobago,2021-07-30,574030.0,North America
+210,Tunisia,2021-07-30,2663438.0,Africa
+211,Turkey,2021-07-30,72929642.0,Asia
+212,Turkmenistan,2021-04-04,41993.0,Asia
+213,Turks and Caicos Islands,2021-07-23,47263.0,North America
+214,Tuvalu,2021-06-15,4772.0,Oceania
+215,Uganda,2021-07-30,1143763.0,Africa
+216,Ukraine,2021-07-30,5526204.0,Europe
+217,United Arab Emirates,2021-07-30,16676766.0,Asia
+218,United Kingdom,2021-07-30,84737932.0,Europe
+219,United States,2021-07-30,344928514.0,North America
+220,Uruguay,2021-07-30,4782669.0,South America
+221,Uzbekistan,2021-07-30,5803255.0,Asia
+222,Vanuatu,2021-07-30,23995.0,Oceania
+223,Vatican,2021-07-30,,Europe
+224,Venezuela,2021-07-30,4000000.0,South America
+225,Vietnam,2021-07-30,5529898.0,Asia
+226,Wallis and Futuna,2021-07-20,9158.0,Oceania
+227,World,2021-07-30,4104897156.0,
+228,Yemen,2021-07-30,311483.0,Asia
+229,Zambia,2021-07-30,424519.0,Africa
+230,Zimbabwe,2021-07-30,2275416.0,Africa
