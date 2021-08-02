@@ -1,0 +1,77 @@
+// Data utilities.
+const parseNA = (string) => (string === "NA" ? undefined : string);
+const parseDate = (string) => d3.timeParse("%d/%m/%y")(string);
+
+// Type conversion.
+function type(d) {
+  const date = parseDate(d.date);
+
+  return {
+    aged_65_older: +d.aged_65_older,
+    aged_70_older: +d.aged_70_older,
+    cardiovasc_death_rate: +d.cardiovasc_death_rate,
+    continent: d.continent,
+    date: date,
+    month: date.getMonth(),
+    year: date.getFullYear(),
+    month_year: (date.getMonth() + 1)
+      .toString()
+      .concat("-", date.getFullYear()),
+    diabetes_prevalence: +d.diabetes_prevalence,
+    excess_mortality: +d.excess_mortality,
+    extreme_poverty: +d.extreme_poverty,
+    female_smokers: +d.female_smokers,
+    gdp_per_capita: +d.gdp_per_capita,
+    handwashing_facilities: +d.handwashing_facilities,
+    hosp_patients: +d.hosp_patients,
+    hosp_patients_per_million: +d.hosp_patients_per_million,
+    hospital_beds_per_thousand: +d.hospital_beds_per_thousand,
+    human_development_index: +d.human_development_index,
+    icu_patients: +d.icu_patients,
+    icu_patients_per_million: +d.icu_patients_per_million,
+    iso_code: +d.iso_code,
+    life_expectancy: +d.life_expectancy,
+    location: d.location,
+    male_smokers: +d.male_smokers,
+    median_age: +d.median_age,
+    new_cases: +d.new_cases,
+    new_cases_per_million: +d.new_cases_per_million,
+    new_cases_smoothed: +d.new_cases_smoothed,
+    new_cases_smoothed_per_million: +d.new_cases_smoothed_per_million,
+    new_deaths: +d.new_deaths,
+    new_deaths_per_million: +d.new_deaths_per_million,
+    new_deaths_smoothed: +d.new_deaths_smoothed,
+    new_deaths_smoothed_per_million: +d.new_deaths_smoothed_per_million,
+    new_tests: +d.new_tests,
+    new_tests_per_thousand: +d.new_tests_per_thousand,
+    new_tests_smoothed: +d.new_tests_smoothed,
+    new_tests_smoothed_per_thousand: +d.new_tests_smoothed_per_thousand,
+    new_vaccinations: +d.new_vaccinations,
+    new_vaccinations_smoothed: +d.new_vaccinations_smoothed,
+    new_vaccinations_smoothed_per_million:
+      +d.new_vaccinations_smoothed_per_million,
+    people_fully_vaccinated: +d.people_fully_vaccinated,
+    people_fully_vaccinated_per_hundred: +d.people_fully_vaccinated_per_hundred,
+    people_vaccinated: +d.people_vaccinated,
+    people_vaccinated_per_hundred: +d.people_vaccinated_per_hundred,
+    population: +d.population,
+    population_density: +d.population_density,
+    positive_rate: +d.positive_rate,
+    reproduction_rate: +d.reproduction_rate,
+    stringency_index: +d.stringency_index,
+    tests_per_case: +d.tests_per_case,
+    tests_units: +d.tests_units,
+    total_cases: +d.total_cases,
+    total_cases_per_million: +d.total_cases_per_million,
+    total_deaths: +d.total_deaths,
+    total_deaths_per_million: +d.total_deaths_per_million,
+    total_tests: +d.total_tests,
+    total_tests_per_thousand: +d.total_tests_per_thousand,
+    total_vaccinations: +d.total_vaccinations,
+    total_vaccinations_per_hundred: +d.total_vaccinations_per_hundred,
+    weekly_hosp_admissions: +d.weekly_hosp_admissions,
+    weekly_hosp_admissions_per_million: +d.weekly_hosp_admissions_per_million,
+    weekly_icu_admissions: +d.weekly_icu_admissions,
+    weekly_icu_admissions_per_million: +d.weekly_icu_admissions_per_million,
+  };
+}
