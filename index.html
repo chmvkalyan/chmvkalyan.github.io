@@ -1,3 +1,41 @@
-<html>
-Hello World!!
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>COVID-19 Visualizations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="js/d3.min.js"></script>
+
+    <script src="js/data_prep.js"></script>
+    <script src="js/utils.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 id="logo">
+        <a href="/" style="text-decoration: none">
+          <img src="images/Logo.png" alt="logo" width="20%" />
+          Some title will go here
+        </a>
+      </h1>
+    </div>
+
+    <div class="top-navigation">
+      <a href="index.html" class="selected"><b>BAR CHART</b></a>
+      <a href="scatter.html"><b>SCATTER PLOT</b></a>
+      <a href="line.html"><b>LINE CHART</b></a>
+    </div>
+
+    <div class="page-title">
+      <h2>Here comes the title</h2>
+    </div>
+
+    <div class="bar-description">
+      <p>Some text for the bar chart</p>
+    </div>
+
+    <script src="js/bar_chart.js"></script>
+    <div class="bar-chart-container" width="100%"></div>
+  </body>
 </html>
