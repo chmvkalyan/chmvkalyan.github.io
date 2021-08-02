@@ -1,0 +1,100 @@
+svg {
+  border: 1px solid #ccc;
+}
+
+text {
+  font-family: "Avenir", sans-serif;
+}
+
+/* .axis .domain {
+    stroke: none;
+}
+
+.x line {
+    stroke: white;
+} */
+
+.axis .domain {
+  stroke: #bbb;
+}
+
+.axis .tick line {
+  stroke: #bbb;
+  stroke-width: 0.5;
+  stroke-dasharray: 4, 2;
+}
+
+.axis .domain {
+  stroke: none;
+}
+
+.x .tick line {
+  stroke: white;
+}
+
+button {
+  outline: none;
+  color: #555;
+  border-color: #eee;
+  background: #fefefe;
+  padding: 3px 10px;
+  font-family: Avenir;
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f7f7f7;
+}
+
+button:focus {
+  background: #e7e7e7;
+}
+
+.tooltip {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* html {
+  max-height: 100%;
+  background: url("images/Coronavirus_people.jpg");
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.8);
+} */
+
+/* .header {
+  overflow: auto;
+  float: left;
+} */
+
+/* Style the top navigation bar */
+.top-navigation {
+  overflow: hidden;
+  background-color: #803432;
+}
+/* Style the topnav links */
+.top-navigation a {
+  float: left;
+  display: block;
+  color: antiquewhite;
+  text-align: center;
+  padding: 5px 12px;
+  text-decoration: none;
+  text-align: center;
+  font-size: medium;
+}
+/* Change color on hover */
+.top-navigation a:hover {
+  background-color: lightblue;
+  color: darkred;
+  text-align: center;
+}
+
+/* Change color on hover */
+.top-navigation .selected {
+  background-color: lightblue;
+  color: darkred;
+  text-align: center;
+}
