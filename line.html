@@ -10,6 +10,10 @@
     <script src="js/utils.js"></script>
 
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <div class="header">
@@ -21,10 +25,32 @@
       </h1>
     </div>
 
-    <div class="top-navigation">
-      <a href="index.html"><b>BAR CHART</b></a>
-      <a href="scatter.html"><b>SCATTER PLOT</b></a>
-      <a href="line.html" class="selected"><b>LINE CHART</b></a>
+    <div class="top-navigation"><p>.</p></div>
+    <div align="center">
+      <button
+        onclick="document.location='index.html'"
+        class="btn btn-primary mr-1"
+      >
+        BAR CHART
+      </button>
+      <button
+        onclick="document.location='scatter.html'"
+        class="btn btn-primary mr-1"
+      >
+        SCATTER PLOT
+      </button>
+      <button
+        onclick="document.location='line.html'"
+        class="btn btn-primary mr-1"
+      >
+        LINE CHART
+      </button>
+      <button
+        onclick="document.location='maps.html'"
+        class="btn btn-primary mr-1"
+      >
+        MAP
+      </button>
     </div>
 
     <div class="page-title">
@@ -35,9 +61,25 @@
       <p>Some text for the line char</p>
     </div>
 
+    <div class="tooltip">
+      <div class="tip-header" align="center">
+        <h3></h3>
+      </div>
+    </div>
+
+    <div align="center"> 
+      <div class="form-group row">
+        <label class="col-form-label">Choose country &nbsp;</label>
+        <select id="selectButton" class="form-select form-select-lg" aria-label=".form-select-lg example"></select>
+      </div>
+    </div>
+
+
+    <div class="line-chart-legend" align="center"></div>
+    <div class="line-chart-container" width="100%"></div>
     <script src="js/line_chart.js"></script>
-    <div class="line-chart-container" width="100%">
-      <select id="selectButton"></select>
+    
+      
     </div>
   </body>
 </html>
