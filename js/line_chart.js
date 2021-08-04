@@ -1,16 +1,22 @@
-// // Type conversion.
-// function line_type(d) {
-//   const date = parseDate(d.release_date);
+tooltip = d3
+  .select("body")
+  .append("div")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
 
-//   return {
-//     date: parseDate(d.date),
-//     location: d.location,
-//     total_cases: +d.total_cases,
-//     total_deaths: +d.total_deaths,
-//     population: +d.population,
-//     continent: d.continent,
-//   };
-// }
+// Type conversion.
+const colorScheme = ["#ff2200", "#0d0000", "#002aff", "#2e9930"];
+
+const legend_html = swatches({
+  color: d3.scaleOrdinal(
+    ["Cases", "Deaths", "Tests", "Vaccinations"],
+    colorScheme
+  ),
+  columns: "180px",
+});
+d3.select(".line-chart-legend").html(legend_html);
+
+// debugger;
 
 // Data preparation.
 function line_filterData(data) {
@@ -18,107 +24,153 @@ function line_filterData(data) {
     return (
       d.location &&
       d.continent &&
-      d.total_cases &&
-      d.total_deaths &&
+      d.new_cases &&
+      d.new_deaths &&
+      d.new_tests &&
+      d.new_vaccinations &&
       d.population
     );
   });
 }
 
-function line_prepareLineChartData(data) {
+function line_prepareLineChartData(data, selectedCountry) {
+  // debugger;
+  // filter data for selected country
+  data = data.filter((d) => d.location == selectedCountry);
+
   // Group by year and extract measures.
-  const groupByMY = (d) => d.month_year;
-  const groupByLoc = (d) => d.location;
-  const reduceCases = (values) => d3.max(values, (leaf) => leaf.total_cases);
-  const casesMap = d3.rollup(data, reduceCases, groupByLoc, groupByMY);
-  const reduceDeath = (values) => d3.max(values, (leaf) => leaf.total_deaths);
-  const deathMap = d3.rollup(data, reduceDeath, groupByLoc, groupByMY);
-
-  // Convert to Array.
-  const total_cases = Array.from(casesMap).sort((a, b) => a[0] - b[0]);
-  const total_deaths = Array.from(deathMap).sort((a, b) => a[0] - b[0]);
-
-  // Parse years.
-  const parseMY = d3.timeParse("%m-%Y");
-
-  // Produce final data.
-  const groupLineData = [];
-  for (let i = 0; i < total_cases.length; i++) {
-    const dates = Array.from(total_cases[i][1].keys(), (d) => parseMY(d));
-
-    // Money maximum.
-    const cases = Array.from(total_cases[i][1].values());
-    const deaths = Array.from(total_deaths[i][1].values());
-    const yValues = cases.concat(deaths);
-
-    const yMax = d3.max(yValues);
-
-    cases_val = [];
-    for (let i = 0; i < cases.length; i++) {
-      cases_val.push({ date: dates[i], value: cases[i] });
-    }
-
-    deaths_val = [];
-    for (let i = 0; i < deaths.length; i++) {
-      deaths_val.push({ date: dates[i], value: deaths[i] });
-    }
-
-    const lineData = {
-      country: total_cases[i][0],
-      series: [
-        {
-          name: "Cases",
-          color: "dodgerblue",
-          values: cases_val,
-        },
-        {
-          name: "Deaths",
-          color: "darkorange",
-          values: deaths_val,
-        },
-      ],
-      dates: dates,
-      yMax: yMax,
+  function extractMeasures(v) {
+    return {
+      Cases: d3.sum(v, (leaf) => leaf.new_cases),
+      Deaths: d3.sum(v, (leaf) => leaf.new_deaths),
+      Tests: d3.sum(v, (leaf) => leaf.new_tests),
+      Vaccinations: d3.sum(v, (leaf) => leaf.new_vaccinations),
     };
-    groupLineData.push(lineData);
   }
 
-  return groupLineData;
+  function getKeyValuePairs(data, line) {
+    var values = [];
+
+    const parseMY = d3.timeParse("%m-%Y");
+    for (const [key, value] of data.entries()) {
+      values.push({ date: parseMY(key), value: value[line] });
+    }
+
+    return values;
+  }
+
+  function getDates(data) {
+    // debugger;
+    // Parse years.
+    const parseMY = d3.timeParse("%m-%Y");
+    var dates = [];
+
+    for (const [key, value] of data.entries()) {
+      dates.push(parseMY(key));
+    }
+
+    return dates;
+  }
+
+  const Measures = d3.rollup(data, extractMeasures, (d) => d.month_year);
+  cases = getKeyValuePairs(Measures, "Cases");
+  deaths = getKeyValuePairs(Measures, "Deaths");
+  tests = getKeyValuePairs(Measures, "Tests");
+  vaccinations = getKeyValuePairs(Measures, "Vaccinations");
+
+  // debugger;
+
+  const yValues = cases.concat(deaths, tests, vaccinations);
+
+  const yMax = d3.max(yValues.map((d) => d.value));
+  const yMin = d3.min(yValues.map((d) => d.value));
+  // Produce final data.
+  const lineData = {
+    country: selectedCountry,
+    series: [
+      {
+        name: "Cases",
+        color: colorScheme[0],
+        values: cases,
+      },
+      {
+        name: "Deaths",
+        color: colorScheme[1],
+        values: deaths,
+      },
+      {
+        name: "Tests",
+        color: colorScheme[2],
+        values: tests,
+      },
+      {
+        name: "Vaccinations",
+        color: colorScheme[3],
+        values: vaccinations,
+      },
+    ],
+    dates: getDates(Measures),
+    yMax: yMax,
+    yMin: yMin,
+  };
+
+  return lineData;
 }
 
 // Drawing utilities.
 function line_formatTicks(d) {
   return d3
-    .format("~s")(d)
-    .replace("M", " mil")
-    .replace("G", " bil")
-    .replace("T", " tril");
+    .format(".2~s")(d)
+    .replace("M", " Million")
+    .replace("G", " Billion")
+    .replace("T", " Trillion")
+    .replace("k", " Thousand");
+}
+
+function getCountries(data) {
+  results = Array.from(
+    d3
+      .rollup(
+        data,
+        (v) => v.location,
+        (d) => d.location
+      )
+      .keys()
+  );
+  return results.sort();
 }
 
 // Main function.line
 function line_ready(covid) {
   // Data prep.
   const covidClean = line_filterData(covid);
-  var lineChartData = line_prepareLineChartData(covidClean);
-  var selectedCountry = 0;
 
   // List of countries
-  const countries = d3.map(lineChartData, (d) => d.country);
+  const countries = getCountries(covidClean);
 
+  var selectedCountry = "United States";
   // add the options to the button
   d3.select("#selectButton")
     .selectAll("myOptions")
+    .attr("align", "center")
     .data(countries)
     .enter()
     .append("option")
     .text((d) => d) // text showed in the menu
-    .attr("value", (d, i) => i); // value of selection
+    .attr("value", (d, i) => i) // value of selection
+    .property("selected", function (d) {
+      return d === selectedCountry;
+    });
 
   d3.select("#selectButton").on("change", function (d) {
     var selectedOption = d3.select(this).property("value");
-    selectedCountry = parseInt(selectedOption);
-    updateLineChart(covidClean, selectedCountry, false);
+    selectedCountry = countries[parseInt(selectedOption)];
+    updateLineChart(covidClean, selectedCountry);
   });
+
+  // debugger;
+
+  var lineChartData = line_prepareLineChartData(covidClean, selectedCountry);
 
   // Margin convention.
   const parentDiv = d3.select(".line-chart-container");
@@ -136,8 +188,6 @@ function line_ready(covid) {
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  lineChartData = lineChartData[selectedCountry];
-
   // Scales.
   const xScale = d3
     .scaleTime()
@@ -145,29 +195,33 @@ function line_ready(covid) {
     .range([0, width]);
 
   const yScale = d3
-    .scaleLinear()
-    .domain([0, lineChartData.yMax])
+    .scaleLog()
+    .domain([lineChartData.yMin, lineChartData.yMax])
     .range([height, 0]);
 
   // Draw header.
-  //   const header = svg
-  //     .append("g")
-  //     .attr("class", "bar-header")
-  //     .attr("transform", `translate(0, ${-margin.top / 2})`)
-  //     .append("text");
+  const header = svg
+    .append("g")
+    .attr("class", "bar-header")
+    .attr("transform", `translate(0, ${-margin.top / 2})`)
+    .append("text");
 
-  //   header.append("tspan").text("Budget vs. Revenue over time in $US");
+  header.append("tspan").text("Cases, Tests, Vaccinations & Deaths over time");
 
-  //   header
-  //     .append("tspan")
-  //     .text("Films w/ budget and revenue figures, 2000-2009")
-  //     .attr("x", 0)
-  //     .attr("dy", "1.5em")
-  //     .style("font-size", "0.8em")
-  //     .style("fill", "#555");
+  header
+    .append("tspan")
+    .text("Line chart by countries")
+    .attr("x", 0)
+    .attr("dy", "1.5em")
+    .style("font-size", "0.8em")
+    .style("fill", "#555");
 
   // Draw x axis.
-  const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
+  const xAxis = d3
+    .axisBottom(xScale)
+    .tickSizeOuter(0)
+    .ticks(d3.timeMonth, 1)
+    .tickFormat(d3.timeFormat("%b-%Y"));
 
   const xAxisDraw = svg
     .append("g")
@@ -175,17 +229,14 @@ function line_ready(covid) {
     .attr("transform", `translate(0, ${height})`)
     .call(xAxis);
 
-  xAxisDraw
-    .selectAll("text")
-    .attr("transform", "rotate(-45)")
-    .style("text-anchor", "end");
+  xAxisDraw.selectAll("text").style("text-anchor", "end");
 
   xAxisDraw.selectAll("text").attr("dy", "1em");
 
   // Draw y axis.
   const yAxis = d3
     .axisLeft(yScale)
-    .ticks(5)
+    .ticks(3)
     .tickFormat(line_formatTicks)
     .tickSizeInner(-width);
 
@@ -210,40 +261,88 @@ function line_ready(covid) {
     .attr("class", (d) => `line-series ${d.name.toLowerCase()}`)
     .attr("d", (d) => lineGen(d.values))
     .style("fill", "none")
+    .style("stroke-width", 3)
     .style("stroke", (d) => d.color);
 
-  chartGroup1
-    .append("g")
-    .attr("class", "series-labels")
-    .selectAll(".series-label")
-    .data(lineChartData.series)
-    .enter()
-    .append("text")
-    .attr("x", (d) => xScale(d.values.date[d.values.length - 1]) + 5)
-    .attr("y", (d) => yScale(d.values.value[d.values.length - 1]))
-    .text((d) => d.name)
-    .style("dominant-baseline", "central")
-    .style("font-size", "0.7em")
-    .style("font-weight", "bold")
-    .style("fill", (d) => d.color);
+  const pointsGroup = svg.append("g").attr("class", "point-groups");
+  const seriesLabel = svg.append("g").attr("class", "series-labels");
+
+  for (let k = 0; k < lineChartData.series.length; k++) {
+    pointsGroup
+      .append("g")
+      .attr("class", `point-group-${lineChartData.series[k].name}`)
+      .selectAll(".point")
+      .data(lineChartData.series[k].values)
+      .enter()
+      .append("circle")
+      .attr("class", `${lineChartData.series[k].name}`)
+      .attr("r", 3)
+      .attr("cx", (d) => xScale(d.date))
+      .attr("cy", (d) => yScale(d.value))
+      .attr("fill", lineChartData.series[k].color);
+  }
+
+  function mouseover(event, d) {
+    const tip = d3.select(".tooltip");
+
+    tip
+      .style("left", `${event.clientX + 15}px`)
+      .style("top", `${event.clientY}px`)
+      .transition()
+      .style("opacity", 0.98);
+
+    tip
+      .select(".tip-header")
+      .select("h3")
+      .html(
+        `${Months[d.date.getMonth() + 1]}-${d.date.getFullYear()} 
+        <br />
+        ${this.classList[0]} 
+        <br />
+        ${line_formatTicks(d.value)}`
+      );
+  }
+
+  function mousemove(event, d) {
+    // debugger;
+    d3.select(".tooltip")
+      .style("left", `${event.clientX + 15}px`)
+      .style("top", `${event.clientY}px`);
+  }
+
+  function mouseout(event, d) {
+    // debugger;
+    d3.select(".tooltip").transition().style("opacity", 0);
+  }
+
+  d3.selectAll("circle")
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseout", mouseout);
 
   function updateLineChart(covidClean, selectedCountry) {
-    var lineChartData = line_prepareLineChartData(covidClean);
-    lineChartData = lineChartData[selectedCountry];
+    // debugger;
+    lineChartData = line_prepareLineChartData(covidClean, selectedCountry);
 
     xScale.domain(d3.extent(lineChartData.dates));
-    yScale.domain([0, lineChartData.yMax]);
+    yScale.domain([lineChartData.yMin, lineChartData.yMax]);
 
-    const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
+    const xAxis = d3
+      .axisBottom(xScale)
+      .tickSizeOuter(0)
+      .ticks(d3.timeMonth, 1)
+      .tickFormat(d3.timeFormat("%b-%Y"));
     xAxisDraw.transition().duration(1000).call(xAxis);
 
     const yAxis = d3
       .axisLeft(yScale)
-      .ticks(5)
+      .ticks(3)
       .tickFormat(line_formatTicks)
       .tickSizeInner(-width);
 
     yAxisDraw.transition().duration(1000).call(yAxis);
+
+    // debugger;
 
     latest
       .data(lineChartData.series)
@@ -251,13 +350,31 @@ function line_ready(covid) {
       .duration(1000)
       .attr("d", (d) => lineGen(d.values));
 
-    //   chartGroup
-    //     .selectAll(".series-label")
-    //     .data(lineChartData.series)
-    //     .attr("x", (d) => xScale(d.values.date[d.values.length - 1]) + 5)
-    //     .attr("y", (d) => yScale(d.values.value[d.values.length - 1]))
-    //     .text((d) => d.name)
-    //     .style("fill", (d) => d.color);
+    for (let k = 0; k < lineChartData.series.length; k++) {
+      // debugger;
+      pg0 = d3
+        .selectAll(".point-groups")
+        .selectAll(`.point-group-${lineChartData.series[k].name}`)
+        .selectAll("circle")
+        .data(lineChartData.series[k].values);
+
+      pg0
+        .enter()
+        .append("circle")
+        .attr("class", `${lineChartData.series[k].name}`)
+        .attr("r", 3)
+        .attr("cx", (d) => xScale(d.date))
+        .attr("cy", (d) => yScale(d.value))
+        .attr("fill", lineChartData.series[k].color);
+
+      pg0
+        .transition()
+        .duration(1000)
+        .attr("cx", (d) => xScale(d.date))
+        .attr("cy", (d) => yScale(d.value));
+
+      pg0.exit().transition().duration(1000).remove();
+    }
   }
 }
 

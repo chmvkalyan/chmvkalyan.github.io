@@ -46,7 +46,7 @@ function bar_ready(covid) {
   const margin = { top: 80, right: 80, bottom: 80, left: 80 };
   const width =
     parentDiv._groups[0][0].clientWidth - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 600 - margin.top - margin.bottom;
 
   // create a tooltip
   var Tooltip = d3
@@ -265,6 +265,7 @@ function bar_ready(covid) {
 
   const yAxis = d3
     .axisLeft(yScale)
+    .ticks(2)
     .tickFormat(bar_formatTicks)
     .tickSizeInner(-width);
 

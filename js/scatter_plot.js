@@ -1,3 +1,22 @@
+const color = {
+  Asia: 0,
+  Europe: 1,
+  Africa: 2,
+  "North America": 3,
+  "South America": 4,
+  Oceania: 5,
+};
+
+const legend_html = swatches({
+  color: d3.scaleOrdinal(
+    ["Asia", "Europe", "Africa", "North America", "South America", "Oceania"],
+    d3.schemeDark2
+  ),
+  columns: "180px",
+});
+
+d3.select(".scatter-plot-legend").html(legend_html);
+
 // Type conversion.
 function scatter_type(d) {
   const date = parseDate(d.release_date);
@@ -38,6 +57,20 @@ function scatter_formatTicks(d) {
     .replace("M", " mil")
     .replace("G", " bil")
     .replace("T", " tril");
+}
+
+const Ccolor = {
+  Asia: 0,
+  Europe: 1,
+  Africa: 2,
+  "North America": 3,
+  "South America": 4,
+  Oceania: 5,
+};
+
+function continentColor(d) {
+  // debugger;
+  return d3.schemeDark2[Ccolor[d]];
 }
 
 // Main function.scatter_
@@ -96,8 +129,8 @@ function scatter_ready(covid) {
   const yMax = d3.max(scatterData, (d) => d.total_cases);
   const sMax = d3.max(scatterData, (d) => d.total_deaths);
 
-  const xScale = d3.scaleLog().domain([10e5, xMax]).range([0, width]);
-  const yScale = d3.scaleLinear().domain([0, yMax]).range([height, 0]);
+  const xScale = d3.scaleLog().domain([10e5, xMax]).range([0, width]).nice();
+  const yScale = d3.scaleLog().domain([50e3, yMax]).range([height, 0]).nice();
   const sScale = d3.scaleLinear().domain([0, sMax]).range([3, 20]);
 
   //   const color = [
@@ -155,11 +188,7 @@ function scatter_ready(covid) {
     .style("fill", "#555");
 
   // Draw axes.
-  const xAxis = d3
-    .axisBottom(xScale)
-    .tickSize(0)
-    .ticks(20)
-    .tickFormat(scatter_formatTicks);
+  const xAxis = d3.axisBottom(xScale).ticks(4).tickFormat(scatter_formatTicks);
 
   const xAxisDraw = svg
     .append("g")
@@ -173,6 +202,7 @@ function scatter_ready(covid) {
 
   const yAxis = d3
     .axisLeft(yScale)
+    .ticks(2)
     .tickFormat(scatter_formatTicks)
     .tickSizeInner(-width);
 
@@ -212,7 +242,7 @@ function scatter_ready(covid) {
     .attr("cy", (d) => yScale(d.total_cases))
     .attr("r", (d) => sScale(d.total_deaths))
     .style("fill-opacity", 0.7)
-    .style("fill", "dodgerblue");
+    .style("fill", (d) => continentColor(d.continent));
 
   d3.selectAll("circle")
     .on("mouseover", mouseover)
