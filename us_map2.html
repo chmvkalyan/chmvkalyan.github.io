@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Independent Farms by County - Choropleth</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://d3js.org/queue.v1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://d3js.org/topojson.v1.min.js"
+    ></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style/index.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 id="logo">
+        <a href="/" style="text-decoration: none">
+          <!-- <img src="images/UIUC Logo.png" alt="logo" width="20%" /> -->
+          Some title will go here
+        </a>
+      </h1>
+    </div>
+
+    <div class="top-navigation"><p>.</p></div>
+    <div align="center">
+      <button
+        onclick="document.location='index.html'"
+        class="btn btn-primary mr-1"
+      >
+        SCATTER PLOT
+      </button>
+      <button
+        onclick="document.location='line.html'"
+        class="btn btn-primary mr-1"
+      >
+        LINE CHART
+      </button>
+      <button
+        onclick="document.location='maps2.html'"
+        class="btn btn-primary mr-1"
+      >
+        MAP 1
+      </button>
+      <button
+        onclick="document.location='maps1.html'"
+        class="btn btn-primary mr-1"
+      >
+        MAP 2
+      </button>
+      <button
+        onclick="document.location='bar.html'"
+        class="btn btn-primary mr-1"
+      >
+        BAR CHART
+      </button>
+      <button
+        onclick="document.location='us_map3.html'"
+        class="btn btn-primary mr-1"
+      >
+        US MAP 1
+      </button>
+      <button
+        onclick="document.location='us_map1.html'"
+        class="btn btn-primary mr-1"
+      >
+        US MAP 2
+      </button>
+    </div>
+
+    <div class="page-title">
+      <h2>Here comes the title</h2>
+    </div>
+
+    <div class="description">
+      <p>Some text for the bar chart</p>
+    </div>
+
+    <div style="width: 800px; display: table; margin: auto; margin-top: 2%">
+      <div style="display: table-row">
+        <div
+          style="
+            width: 100px;
+            display: table-cell;
+            border-top: 5px solid #a4c96f;
+            text-align: center;
+          "
+        >
+          Low
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div
+          style="
+            width: 100px;
+            display: table-cell;
+            border-top: 5px solid #f0c300;
+            text-align: center;
+          "
+        >
+          Moderate
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div
+          style="
+            width: 100px;
+            display: table-cell;
+            border-top: 5px solid #ff8104;
+            text-align: center;
+          "
+        >
+          High
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div
+          style="
+            width: 100px;
+            display: table-cell;
+            border-top: 5px solid #e03320;
+            text-align: center;
+          "
+        >
+          Very High
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div
+          style="
+            width: 120px;
+            display: table-cell;
+            border-top: 5px solid #930e6e;
+            text-align: center;
+          "
+        >
+          Extremely High
+        </div>
+      </div>
+    </div>
+    <div id="us"></div>
+    <script type="text/javascript" src="js/risk-level-map.js"></script>
+  </body>
+</html>

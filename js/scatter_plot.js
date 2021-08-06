@@ -45,18 +45,18 @@ function scatter_filterData(data) {
 }
 
 function scatter_prepareScatterPlotData(data) {
-  return data
-    .sort((a, b) => b.total_cases - a.total_cases)
-    .filter((d, i) => i < 100);
+  return data.sort((a, b) => b.total_cases - a.total_cases);
+  // .filter((d, i) => i < 100);
 }
 
 // Drawing utilities.
 function scatter_formatTicks(d) {
   return d3
-    .format("~s")(d)
-    .replace("M", " mil")
-    .replace("G", " bil")
-    .replace("T", " tril");
+    .format(".2~s")(d)
+    .replace("M", " Million")
+    .replace("G", " Billion")
+    .replace("T", " Trillion")
+    .replace("k", " Thousand");
 }
 
 const Ccolor = {
@@ -106,15 +106,10 @@ function scatter_ready(covid) {
   };
   var mousemove = function (event, d) {
     Tooltip.html(
-      "<p>" +
-        d.location +
-        "<br /> Population - " +
-        scatter_formatTicks(d.population) +
-        "<br /> Cases - " +
-        scatter_formatTicks(d.total_cases) +
-        "<br /> Deaths - " +
-        scatter_formatTicks(d.total_deaths) +
-        "</p>"
+      `<p> <strong> ${d.location} </strong> 
+        <br /> Population - ${scatter_formatTicks(d.population)}
+        <br /> Cases - ${scatter_formatTicks(d.total_cases)}
+        <br /> Deaths - ${scatter_formatTicks(d.total_deaths)} </p>`
     )
       .style("left", event.pageX + 10 + "px")
       .style("top", event.pageY - 50 + "px");
@@ -129,9 +124,9 @@ function scatter_ready(covid) {
   const yMax = d3.max(scatterData, (d) => d.total_cases);
   const sMax = d3.max(scatterData, (d) => d.total_deaths);
 
-  const xScale = d3.scaleLog().domain([10e5, xMax]).range([0, width]).nice();
-  const yScale = d3.scaleLog().domain([50e3, yMax]).range([height, 0]).nice();
-  const sScale = d3.scaleLinear().domain([0, sMax]).range([3, 20]);
+  const xScale = d3.scaleLog().domain([10e3, xMax]).range([0, width]).nice();
+  const yScale = d3.scaleLog().domain([1, yMax]).range([height, 0]).nice();
+  const sScale = d3.scaleLinear().domain([0, sMax]).range([8, 30]);
 
   //   const color = [
   //     "#1fe21a",
@@ -188,7 +183,7 @@ function scatter_ready(covid) {
     .style("fill", "#555");
 
   // Draw axes.
-  const xAxis = d3.axisBottom(xScale).ticks(4).tickFormat(scatter_formatTicks);
+  const xAxis = d3.axisBottom(xScale).ticks(6).tickFormat(scatter_formatTicks);
 
   const xAxisDraw = svg
     .append("g")
@@ -202,7 +197,7 @@ function scatter_ready(covid) {
 
   const yAxis = d3
     .axisLeft(yScale)
-    .ticks(2)
+    .ticks(5)
     .tickFormat(scatter_formatTicks)
     .tickSizeInner(-width);
 

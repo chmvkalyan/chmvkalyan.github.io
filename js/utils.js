@@ -92,3 +92,7 @@ var Months = {
   11: "Nov",
   12: "Dec",
 };
+
+const map2_color = d3.interpolateRgb("#C5DED7", "#588E84");
+
+const map1_color = d3.interpolateRgb("yellow", "red");

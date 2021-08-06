@@ -1,0 +1,148 @@
+path {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+body {
+  font-family: "Proxima Nova", sans-serif;
+}
+.county {
+  font: 14px sans-serif;
+  font-weight: 700;
+}
+.legend {
+  font-size: 14px;
+  font-family: "Proxima Nova", sans-serif;
+}
+.legend_title {
+  font-size: 14px;
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 700;
+}
+div.tooltip {
+  position: absolute;
+  left: 75px;
+  text-align: center;
+  height: 16px;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #989898;
+  pointer-events: none;
+}
+p {
+  width: 150px;
+  padding: 4px;
+  margin-left: 4px;
+  color: #fff;
+}
+.ticks {
+  font-size: 10px;
+}
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+  stroke-width: 10px;
+}
+.track-inset {
+  stroke: #dcdcdc;
+  stroke-width: 8px;
+}
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: transparent;
+  cursor: crosshair;
+}
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+.g-hed {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 3px 0;
+}
+.g-source-bold {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #333;
+}
+.g-source {
+  margin-bottom: 2px;
+  font-size: 11px;
+  color: #999;
+}
+.g-intro {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+.g-num {
+  fill: #2e7264;
+}
+.g-num2 {
+  fill: #e0e0e0;
+}
+.g-num3 {
+  fill: #e0e0e0;
+}
+.g-num4 {
+  fill: #2e7264;
+}
+.g-labels {
+  font-family: Proxima-Nova, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+.g-labels-tooltip {
+  font-family: Proxima-Nova, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+.x.axis line,
+.y.axis line {
+  display: none;
+}
+.x.axis text {
+  display: none;
+}
+.domain {
+  display: none;
+}
+.y.axis text {
+  font-family: Proxima-Nova, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-anchor: end !important;
+  fill: #c12726;
+}
+.logo {
+  border-bottom: 1px solid #c3cddf;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+.logoImg {
+  width: 185px;
+}
+.g-chart {
+  border-bottom: 1px solid #c3cddf;
+}
+#bar {
+  margin-left: 100px;
+}
+span {
+  font-size: 14px;
+  margin-right: 40px;
+  text-align: center;
+}
+span.case-heading {
+  font-size: 10px;
+}

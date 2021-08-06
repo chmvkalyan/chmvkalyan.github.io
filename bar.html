@@ -9,7 +9,7 @@
     <script src="js/data_prep.js"></script>
     <script src="js/utils.js"></script>
 
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -19,7 +19,7 @@
     <div class="header">
       <h1 id="logo">
         <a href="/" style="text-decoration: none">
-          <img src="images/UIUC Logo.png" alt="logo" width="20%" />
+          <!-- <img src="images/UIUC Logo.png" alt="logo" width="20%" /> -->
           Some title will go here
         </a>
       </h1>
@@ -57,47 +57,17 @@
       >
         BAR CHART
       </button>
-      <button
-        onclick="document.location='us_map3.html'"
-        class="btn btn-primary mr-1"
-      >
-        US MAP 1
-      </button>
-      <button
-        onclick="document.location='us_map1.html'"
-        class="btn btn-primary mr-1"
-      >
-        US MAP 2
-      </button>
     </div>
 
     <div class="page-title">
       <h2>Here comes the title</h2>
     </div>
 
-    <div class="line-description">
-      <p>Some text for the line char</p>
+    <div class="description">
+      <p>Some text for the bar chart</p>
     </div>
 
-    <div class="tooltip">
-      <div class="tip-header" align="center">
-        <h3></h3>
-      </div>
-    </div>
-
-    <div align="center"> 
-      <div class="form-group row">
-        <label class="col-form-label">Choose country &nbsp;</label>
-        <select id="selectButton" class="form-select form-select-lg" aria-label=".form-select-lg example"></select>
-      </div>
-    </div>
-
-
-    <div class="line-chart-legend" align="center"></div>
-    <div class="line-chart-container" width="100%"></div>
-    <script src="js/line_chart.js"></script>
-    
-      
-    </div>
+    <div class="bar-chart-container" width="100%"></div>
+    <script src="js/bar_chart.js"></script>
   </body>
 </html>
