@@ -7,10 +7,18 @@ const color = {
   Oceania: 5,
 };
 
+const ContColor = [
+  "#E03426",
+  "#FC719E",
+  "#CE69BE",
+  "#1BA3C6",
+  "#F89218",
+  "#A3B627",
+];
 const legend_html = swatches({
   color: d3.scaleOrdinal(
-    ["Asia", "Europe", "Africa", "North America", "South America", "Oceania"],
-    d3.schemeDark2
+    ["Asia", "North America", "South America", "Europe", "Africa", "Oceania"],
+    ContColor
   ),
   columns: "180px",
 });
@@ -82,7 +90,7 @@ function scatter_ready(covid) {
   // Margin convention.
   const parentDiv = d3.select(".scatter-plot-container");
   //   const svg = d3.select(parentDiv).append("svg");
-  const margin = { top: 80, right: 80, bottom: 80, left: 80 };
+  const margin = { top: 80, right: 80, bottom: 120, left: 150 };
   const width =
     parentDiv._groups[0][0].clientWidth - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
@@ -92,12 +100,7 @@ function scatter_ready(covid) {
     .select(".scatter-plot-container")
     .append("div")
     .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px");
+    .attr("class", "tooltip");
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (event, d) {
@@ -203,17 +206,17 @@ function scatter_ready(covid) {
 
   const xLabel = svg
     .append("text")
-    .attr("class", "x label")
+    .attr("class", "x mylabel")
     .attr("text-anchor", "middle")
     .attr("x", width / 2)
-    .attr("y", height + 60)
+    .attr("y", height * 1.25)
     .text("Population of the country");
 
   const yLabel = svg
     .append("g")
-    .attr("transform", `translate(-50, ${height / 2})`)
+    .attr("transform", `translate(-100, ${height / 2})`)
     .append("text")
-    .attr("class", "y label")
+    .attr("class", "y mylabel")
     .attr("text-anchor", "middle")
     .attr("transform", "rotate(-90)")
     .text("Total cases");

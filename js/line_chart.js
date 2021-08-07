@@ -206,7 +206,7 @@ function line_ready(covid) {
     .attr("transform", `translate(0, ${-margin.top / 2})`)
     .append("text");
 
-  header.append("tspan").text("Cases, Tests, Vaccinations & Deaths over time");
+  header.append("tspan").text("Tests, Cases, Deaths & Vaccinations over time");
 
   header
     .append("tspan")
@@ -236,7 +236,7 @@ function line_ready(covid) {
   // Draw y axis.
   const yAxis = d3
     .axisLeft(yScale)
-    .ticks(3)
+    .ticks(4)
     .tickFormat(line_formatTicks)
     .tickSizeInner(-width);
 
@@ -285,29 +285,24 @@ function line_ready(covid) {
   function mouseover(event, d) {
     const tip = d3.select(".tooltip");
 
-    tip
-      .style("left", `${event.clientX + 15}px`)
-      .style("top", `${event.clientY}px`)
-      .transition()
-      .style("opacity", 0.98);
+    tip.transition().style("opacity", 0.98);
 
-    tip
-      .select(".tip-header")
-      .select("h3")
-      .html(
-        `${Months[d.date.getMonth() + 1]}-${d.date.getFullYear()} 
+    tip.html(
+      `<strong>${
+        Months[d.date.getMonth() + 1]
+      }-${d.date.getFullYear()}</strong> 
         <br />
         ${this.classList[0]} 
         <br />
         ${line_formatTicks(d.value)}`
-      );
+    );
   }
 
   function mousemove(event, d) {
     // debugger;
     d3.select(".tooltip")
-      .style("left", `${event.clientX + 15}px`)
-      .style("top", `${event.clientY}px`);
+      .style("left", `${event.pageX + 15}px`)
+      .style("top", `${event.pageY}px`);
   }
 
   function mouseout(event, d) {

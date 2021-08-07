@@ -17,60 +17,7 @@
     />
   </head>
   <body>
-    <div class="header">
-      <h1 id="logo">
-        <a href="/" style="text-decoration: none">
-          <img src="images/UIUC Logo.png" alt="logo" width="20%" />
-          Some title will go here
-        </a>
-      </h1>
-    </div>
-
-    <div class="top-navigation"><p>.</p></div>
-    <div align="center">
-      <button
-        onclick="document.location='index.html'"
-        class="btn btn-primary mr-1"
-      >
-        SCATTER PLOT
-      </button>
-      <button
-        onclick="document.location='line.html'"
-        class="btn btn-primary mr-1"
-      >
-        LINE CHART
-      </button>
-      <button
-        onclick="document.location='maps2.html'"
-        class="btn btn-primary mr-1"
-      >
-        MAP 1
-      </button>
-      <button
-        onclick="document.location='maps1.html'"
-        class="btn btn-primary mr-1"
-      >
-        MAP 2
-      </button>
-      <button
-        onclick="document.location='bar.html'"
-        class="btn btn-primary mr-1"
-      >
-        BAR CHART
-      </button>
-      <button
-        onclick="document.location='us_map3.html'"
-        class="btn btn-primary mr-1"
-      >
-        US MAP 1
-      </button>
-      <button
-        onclick="document.location='us_map1.html'"
-        class="btn btn-primary mr-1"
-      >
-        US MAP 2
-      </button>
-    </div>
+    <div w3-include-html="header.html"></div>
 
     <div class="page-title">
       <h2>Here comes the title</h2>
@@ -121,5 +68,11 @@
 
     <script src="js/maps2.js"></script>
     <div class="map-container" width="100%" align="center"></div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <script>
+      includeHTML();
+    </script>
   </body>
 </html>

@@ -13,6 +13,7 @@
       type="text/javascript"
       src="https://d3js.org/topojson.v1.min.js"
     ></script>
+    <script src="js/utils.js"></script>
     <link rel="stylesheet" href="style/style.css" />
     <link
       rel="stylesheet"
@@ -21,67 +22,35 @@
     <link rel="stylesheet" href="style/index.css" />
   </head>
   <body>
-    <div class="header">
-      <h1 id="logo">
-        <a href="/" style="text-decoration: none">
-          <!-- <img src="images/UIUC Logo.png" alt="logo" width="20%" /> -->
-          Some title will go here
-        </a>
-      </h1>
-    </div>
-
-    <div class="top-navigation"><p>.</p></div>
-    <div align="center">
-      <button
-        onclick="document.location='index.html'"
-        class="btn btn-primary mr-1"
-      >
-        SCATTER PLOT
-      </button>
-      <button
-        onclick="document.location='line.html'"
-        class="btn btn-primary mr-1"
-      >
-        LINE CHART
-      </button>
-      <button
-        onclick="document.location='maps2.html'"
-        class="btn btn-primary mr-1"
-      >
-        MAP 1
-      </button>
-      <button
-        onclick="document.location='maps1.html'"
-        class="btn btn-primary mr-1"
-      >
-        MAP 2
-      </button>
-      <button
-        onclick="document.location='bar.html'"
-        class="btn btn-primary mr-1"
-      >
-        BAR CHART
-      </button>
-      <button
-        onclick="document.location='us_map3.html'"
-        class="btn btn-primary mr-1"
-      >
-        US MAP 1
-      </button>
-      <button
-        onclick="document.location='us_map1.html'"
-        class="btn btn-primary mr-1"
-      >
-        US MAP 2
-      </button>
-    </div>
+    <div w3-include-html="header.html"></div>
 
     <div class="page-title">
-      <h2 style="text-align: center">Number of Vaccination Doses in the USA</h2>
+      <h2>Vaccinations across County</h2>
     </div>
 
     <div class="description">
-      <p>Some text for the bar chart</p>
+      About 193.8 million people have received at least one dose of a Covid-19
+      vaccine, including about 165.9 million people who have been fully
+      vaccinated by Johnson & Johnson’s single-dose vaccine or the two-dose
+      series made by Pfizer-BioNTech and Moderna. <br />
+      About 70.6 percent of adults have received at least one shot. President
+      Biden set a goal on May 4 of reaching 70 percent of adults by July 4, but
+      it took almost a month extra to reach that national target. <br />
+      Speed isn’t the only priority for the country’s vaccination campaign. The
+      Biden administration has also committed to distributing shots equitably to
+      the communities most affected by the pandemic. <br />
+      Yet more than seven months into the rollout, the most socially vulnerable
+      counties in the U.S. have a lower vaccination rate on average than the
+      nation’s least vulnerable. The majority of the most disadvantaged counties
+      with the fewest fully vaccinated people are in the South, while the most
+      vaccinated, least vulnerable counties are in the Midwest and Northeast.
+      <br />
+      Counties are ranked according to the Social Vulnerability Index, a C.D.C.
+      indicator used in public health crises that is based on socioeconomic
+      status, housing, transportation, race, ethnicity and language. Each
+      county’s vaccination rate is its share of all residents that have been
+      fully vaccinated, a figure that does not reflect those who have only
+      received one dose of a two-shot vaccine.
     </div>
 
     <div id="us"></div>
@@ -90,5 +59,11 @@
       <h4 style="text-align: center">United States vaccinations</h4>
     </div>
     <script type="text/javascript" src="js/vaccination-map.js"></script>
+
+    <div w3-include-html="footer.html"></div>
+
+    <script>
+      includeHTML();
+    </script>
   </body>
 </html>

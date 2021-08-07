@@ -228,11 +228,7 @@ Promise.all(promises).then(function ready(values) {
 
     const tip = d3.select(".tooltip");
 
-    tip
-      .style("left", `${event.clientX}px`)
-      .style("top", `${event.clientY}px`)
-      .transition()
-      .style("opacity", 0.98);
+    tip.transition().style("opacity", 0.98);
 
     tip.select("h3").html(`${country} (${TipData.continent})`);
     // tip.select("h4").html(`${TipData.continent}`);
@@ -248,8 +244,8 @@ Promise.all(promises).then(function ready(values) {
   function mousemove(event, d) {
     // debugger;
     d3.select(".tooltip")
-      .style("left", `${event.clientX}px`)
-      .style("top", `${event.clientY}px`);
+      .style("left", `${event.pageX + 10}px`)
+      .style("top", `${event.pageY}px`);
   }
 
   function mouseout(event, d) {

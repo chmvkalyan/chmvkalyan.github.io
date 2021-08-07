@@ -16,54 +16,7 @@
     />
   </head>
   <body>
-    <div class="header">
-      <h1 id="logo">
-        <a href="/">
-          <img src="images/UIUC Logo.png" alt="logo" width="20%" />
-        </a>
-        The UIUC's Narrative Visualization for COVID-19 Tracking
-      </h1>
-      <marquee style="text-align: center" scrollamount="12" loop="7">
-        <strong>Note:</strong>
-        This Narrative Visualization has been created as part of University's
-        Semester Project. It focuses on the COVID data as of August first week,
-        2021.
-      </marquee>
-    </div>
-    <div class="top-navigation"><p>.</p></div>
-    <div align="center">
-      <button onclick="document.location='index.html'" class="btn btn-primary">
-        <strong>SCATTER PLOT</strong>
-      </button>
-      <button onclick="document.location='line.html'" class="btn btn-primary">
-        <strong>LINE CHART</strong>
-      </button>
-      <button onclick="document.location='maps2.html'" class="btn btn-primary">
-        <strong>MAP 1</strong>
-      </button>
-      <button onclick="document.location='maps1.html'" class="btn btn-primary">
-        <strong>MAP 2</strong>
-      </button>
-      <button onclick="document.location='bar.html'" class="btn btn-primary">
-        <strong>BAR CHART</strong>
-      </button>
-    </div>
-
-    <div align="center">
-      <p>USA Specific :</p>
-      <button
-        onclick="document.location='us_map3.html'"
-        class="btn btn-primary"
-      >
-        <strong> US MAP 1 </strong>
-      </button>
-      <button
-        onclick="document.location='us_map1.html'"
-        class="btn btn-primary"
-      >
-        <strong>US MAP 2</strong>
-      </button>
-    </div>
+    <div w3-include-html="header.html"></div>
 
     <div class="page-title">
       <h2>Here comes the title</h2>
@@ -73,25 +26,14 @@
       <p>Some text for the Home Page</p>
     </div>
 
-    <div class="scatter-plot-legend" width="100%"></div>
-    <div class="scatter-plot-container" width="100%"></div>
-    <script src="js/scatter_plot.js"></script>
+    <div class="line-chart-legend" align="center"></div>
+    <div class="line-chart-container" width="100%"></div>
+    <script src="js/line_chart.js"></script>
 
-    <div style="line-height: normal">.</div>
-    <div class="top-navigation"><p>.</p></div>
+    <div w3-include-html="footer.html"></div>
 
-    <div class="footer">
-      <div>Author : Mohana Venkata Kalyan Cheerla<br /></div>
-      <div>Course : CS 416 - Data Visualization<br /></div>
-      <div>
-        References : <br />
-        <div class="ref-links">
-          https://github.com/nytimes/covid-19-data <br />
-          https://ourworldindata.org/coronavirus-source-data,<br />
-          https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh<br />
-          https://www.nytimes.com/interactive/2021/us/covid-cases.html
-        </div>
-      </div>
-    </div>
+    <script>
+      includeHTML();
+    </script>
   </body>
 </html>

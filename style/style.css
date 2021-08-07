@@ -32,33 +32,45 @@ text {
   stroke: black;
 }
 
-.y .label text {
-  font-size: 2em;
+text.mylabel {
+  font-size: 100%;
+  font-weight: bold;
 }
 
-button {
+.mybutton {
   outline: none;
-  color: #555;
-  border-color: #eee;
-  background: #fefefe;
-  padding: 3px 10px;
+  background-color: #10294b;
+  color: #f15735;
+  /* padding: 3px 10px; */
   font-family: Avenir;
+  font-size: 1.5em;
   transition: all 200ms;
   cursor: pointer;
+  width: 15%;
+  min-height: 100px;
 }
 
-button:hover {
+.mybutton:hover {
   background: #f7f7f7;
 }
 
-button:focus {
-  background: #e7e7e7;
+.mybutton:focus {
+  background: #10294b;
 }
 
-.tooltip {
-  position: fixed;
-  opacity: 0;
-  pointer-events: none;
+.myButtonLabel {
+  outline: none;
+  /* background-color: #10294b; */
+  color: #f15735;
+  /* padding: 3px 10px; */
+  font-family: Avenir;
+  font-size: 1.5em;
+  transition: all 200ms;
+  cursor: pointer;
+  width: 15%;
+  height: 100px;
+  float: left;
+  text-align: center;
 }
 
 html {
@@ -111,8 +123,14 @@ html.map {
   position: fixed;
   opacity: 0;
   pointer-events: none;
-  background: #eee;
   max-width: 250px;
+  background-color: white;
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: Avenir sans-serif;
+  font-size: 1em;
 }
 
 .tip-header {
@@ -147,13 +165,13 @@ h4 {
   background: #e0e0e0;
 }
 
-button {
+/* button {
   height: 50px;
   width: 200px;
   padding: 14px 28px;
   margin-right: 20px !important;
   margin-top: 10px !important;
-}
+} */
 
 #selectButton {
   align-items: center;
@@ -200,4 +218,24 @@ a:link {
 
 .ref-links {
   padding-left: 85px;
+}
+
+.country {
+  fill: #deb887;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.page-title h2 {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 50px;
+  color: #803432;
+}
+
+.description {
+  padding-left: 50px;
+  color: #063c75;
+  font-family: Cambria;
+  font-size: 1.3em;
 }
