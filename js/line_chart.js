@@ -376,6 +376,6 @@ function line_ready(COVID) {
 }
 
 // Load data.
-d3.csv("../data/owid-COVID-data.csv", type).then((res) => {
+d3.csv("../data/owid-covid-data.csv", type).then((res) => {
   line_ready(res);
 });

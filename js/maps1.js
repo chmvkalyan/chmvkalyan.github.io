@@ -5,7 +5,7 @@ tooltip = d3
   .style("opacity", 0);
 
 const promises = [];
-promises.push(d3.csv("../data/owid-COVID-data.csv"));
+promises.push(d3.csv("../data/owid-covid-data.csv"));
 promises.push(
   d3.json(
     "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
