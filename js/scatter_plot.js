@@ -1,28 +1,3 @@
-const color = {
-  Asia: 0,
-  Europe: 1,
-  Africa: 2,
-  "North America": 3,
-  "South America": 4,
-  Oceania: 5,
-};
-
-const ContColor = [
-  "#E03426",
-  "#FC719E",
-  "#CE69BE",
-  "#1BA3C6",
-  "#F89218",
-  "#A3B627",
-];
-const legend_html = swatches({
-  color: d3.scaleOrdinal(
-    ["Asia", "North America", "South America", "Europe", "Africa", "Oceania"],
-    ContColor
-  ),
-  columns: "180px",
-});
-
 d3.select(".scatter-plot-legend").html(legend_html);
 
 // Type conversion.
@@ -82,10 +57,10 @@ function continentColor(d) {
 }
 
 // Main function.scatter_
-function scatter_ready(covid) {
+function scatter_ready(COVID) {
   // Data prep.
-  const covidClean = scatter_filterData(covid);
-  const scatterData = scatter_prepareScatterPlotData(covidClean);
+  const COVIDClean = scatter_filterData(COVID);
+  const scatterData = scatter_prepareScatterPlotData(COVIDClean);
 
   // Margin convention.
   const parentDiv = d3.select(".scatter-plot-container");
@@ -129,7 +104,7 @@ function scatter_ready(covid) {
 
   const xScale = d3.scaleLog().domain([10e3, xMax]).range([0, width]).nice();
   const yScale = d3.scaleLog().domain([1, yMax]).range([height, 0]).nice();
-  const sScale = d3.scaleLinear().domain([0, sMax]).range([8, 30]);
+  const sScale = d3.scaleLinear().domain([0, sMax]).range([3, 40]);
 
   //   const color = [
   //     "#1fe21a",
@@ -175,15 +150,15 @@ function scatter_ready(covid) {
     .attr("transform", `translate(0, ${-margin.top / 2})`)
     .append("text");
 
-  header.append("tspan").text("Population vs. Cases per country");
+  // header.append("tspan").text("Population vs. Cases per country");
 
-  header
-    .append("tspan")
-    .text("Top 100 highly populated countries")
-    .attr("x", 0)
-    .attr("dy", "1.5em")
-    .style("font-size", "0.8em")
-    .style("fill", "#555");
+  // header
+  //   .append("tspan")
+  //   .text("Top 100 highly populated countries")
+  //   .attr("x", 0)
+  //   .attr("dy", "1.5em")
+  //   .style("font-size", "0.8em")
+  //   .style("fill", "#555");
 
   // Draw axes.
   const xAxis = d3.axisBottom(xScale).ticks(6).tickFormat(scatter_formatTicks);
@@ -246,6 +221,65 @@ function scatter_ready(covid) {
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
+
+  // Draw Annotations
+  //arrow for annotation
+  const annots = svg.append("g").attr("class", "annotations");
+
+  annots
+    .append("svg:defs")
+    .append("svg:marker")
+    .attr("id", "triangle")
+    .attr("refX", 10)
+    .attr("refY", 6)
+    .attr("markerWidth", 500)
+    .attr("markerHeight", 500)
+    .attr("markerUnits", "userSpaceOnUse")
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M 0 0 12 6 0 12 3 6")
+    .style("fill", "black");
+
+  // //line for annotation
+  annots
+    .append("line")
+    .attr("x1", xScale(50e7))
+    .attr("y1", yScale(300))
+    .attr("x2", xScale(50e7))
+    .attr("y2", yScale(30e5))
+    .attr("stroke-width", 2)
+    .attr("stroke", "black")
+    .attr("marker-end", "url(#triangle)");
+
+  // text for annotation
+  annots
+    .append("text")
+    .attr("x", xScale(50e6))
+    .attr("y", yScale(100))
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 15)
+    .style("fill", "black")
+    .text(
+      "USA, India, Brazil, Russia, and Mexico are the top 5 countries having"
+    );
+
+  annots
+    .append("text")
+    .attr("x", xScale(50e6))
+    .attr("y", yScale(30))
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 15)
+    .style("fill", "black")
+    .text("the highest number of cases, and deaths among the top 10");
+
+  annots
+    .append("text")
+    .attr("x", xScale(50e6))
+    .attr("y", yScale(10))
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 15)
+    .style("fill", "black")
+    .text("highly populated countries.");
 }
 
 // Load data.

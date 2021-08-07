@@ -19,78 +19,149 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style/index.css" />
+    <script
+      src="https://kit.fontawesome.com/0e87c14f62.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="page-title">
-      <h2>Here comes the title</h2>
-    </div>
+    <div class="content-container">
+      <div class="page-title">
+        <h2>County Wise Risk Analysis</h2>
+      </div>
 
-    <div class="description">
-      <p>Some text for the bar chart</p>
-    </div>
+      <div class="description">
+        <p>
+          The below map depicts the COVID-19 risk for unvaccinated people based
+          on the cases and test positivity in the each county. A majority of
+          United States counties were experiencing very high COVID-19
+          transmission in early August, according to an analysis of coronavirus
+          case and testing data by The New York Times and public health experts.
+          This means that unvaccinated people in those counties are at very high
+          risk. Vaccinated people are at minimal risk. <br />
+        </p>
+        <p>
+          A majority of the counties were experiencing very high COVID-19
+          transmission in early August, according to an analysis of coronavirus
+          case, and testing data by The New York Times and public health
+          experts. This means that unvaccinated people in those counties are at
+          <mark4>very high</mark4> risk and vaccinated people are at minimal
+          risk.
+          <br />
+        </p>
+        <p>
+          <strong
+            >COVID-19 risk for unvaccinated people is based on cases and test
+            positivity. </strong
+          ><br />
+        </p>
+      </div>
 
-    <div style="width: 800px; display: table; margin: auto; margin-top: 2%">
-      <div style="display: table-row">
-        <div
-          style="
-            width: 100px;
-            display: table-cell;
-            border-top: 5px solid #a4c96f;
-            text-align: center;
-          "
-        >
-          Low
-        </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div
-          style="
-            width: 100px;
-            display: table-cell;
-            border-top: 5px solid #f0c300;
-            text-align: center;
-          "
-        >
-          Moderate
-        </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div
-          style="
-            width: 100px;
-            display: table-cell;
-            border-top: 5px solid #ff8104;
-            text-align: center;
-          "
-        >
-          High
-        </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div
-          style="
-            width: 100px;
-            display: table-cell;
-            border-top: 5px solid #e03320;
-            text-align: center;
-          "
-        >
-          Very High
-        </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div
-          style="
-            width: 120px;
-            display: table-cell;
-            border-top: 5px solid #930e6e;
-            text-align: center;
-          "
-        >
-          Extremely High
+      <div style="width: 800px; display: table; margin: auto; margin-top: 2%">
+        <div style="display: table-row">
+          <div
+            style="
+              width: 100px;
+              display: table-cell;
+              border-top: 5px solid #a4c96f;
+              text-align: center;
+            "
+          >
+            Low
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div
+            style="
+              width: 100px;
+              display: table-cell;
+              border-top: 5px solid #f0c300;
+              text-align: center;
+            "
+          >
+            Moderate
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div
+            style="
+              width: 100px;
+              display: table-cell;
+              border-top: 5px solid #ff8104;
+              text-align: center;
+            "
+          >
+            High
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div
+            style="
+              width: 100px;
+              display: table-cell;
+              border-top: 5px solid #e03320;
+              text-align: center;
+            "
+          >
+            Very High
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div
+            style="
+              width: 120px;
+              display: table-cell;
+              border-top: 5px solid #930e6e;
+              text-align: center;
+            "
+          >
+            Extremely High
+          </div>
         </div>
       </div>
+      <div id="us"></div>
+      <script type="text/javascript" src="js/risk-level-map.js"></script>
+
+      <div class="description">
+        <strong>About the COVID-19 Risk Levels</strong>
+        <p>
+          Each county’s COVID-19 risk is primarily based on the number of cases
+          reported per capita during the past 7 days. Additional precautions are
+          suggested if more than 10 percent of tests had a positive result over
+          the past 7 days of available data. This can mean that the county is
+          not testing enough, and that the number of cases may be undercounted.
+          <br />
+        </p>
+        <p>
+          Although risk levels are assigned based on expert guidance and careful
+          analysis, it is possible that the risk level in a specific county may
+          be over- or underestimated because of a lack of reliable data.
+          <br />
+        </p>
+        <p>
+          A county is at
+          <li>
+            an <mark5> extremely high risk</mark5> for unvaccinated people if it
+            reported an average daily rate of more than 45 cases per 100,000
+            people.
+          </li>
+          <li>
+            an <mark4> very high risk</mark4> for unvaccinated people if it
+            reported an average daily rate of 16 to 45 cases per 100,000 people.
+          </li>
+          <li>
+            an <mark3> high risk</mark3> for unvaccinated people if it reported
+            an average daily rate of 6 to 15 cases per 100,000 people.
+          </li>
+          <li>
+            an <mark2> moderate risk</mark2> for unvaccinated people if it
+            reported an average daily rate of 3 to 5 cases per 100,000 people.
+          </li>
+          <li>
+            an <mark1> low risk</mark1> for unvaccinated people if it reported
+            an average daily rate of less than 3 cases per 100,000 people.
+          </li>
+        </p>
+      </div>
     </div>
-    <div id="us"></div>
-    <script type="text/javascript" src="js/risk-level-map.js"></script>
 
     <div w3-include-html="footer.html"></div>
 

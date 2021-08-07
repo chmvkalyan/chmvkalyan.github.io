@@ -135,10 +135,10 @@ function line_formatTicks(d) {
 }
 
 // Main function.line
-function line_ready(covid) {
+function line_ready(COVID) {
   // Data prep.
-  const covidClean = line_filterData(covid);
-  var lineChartData = line_prepareLineChartData(covidClean);
+  const COVIDClean = line_filterData(COVID);
+  var lineChartData = line_prepareLineChartData(COVIDClean);
   var selectedCountry = 0;
 
   debugger;
@@ -157,7 +157,7 @@ function line_ready(covid) {
   d3.select("#selectButton").on("change", function (d) {
     var selectedOption = d3.select(this).property("value");
     selectedCountry = parseInt(selectedOption);
-    updateLineChart(covidClean, selectedCountry, false);
+    updateLineChart(COVIDClean, selectedCountry, false);
   });
 
   // Margin convention.
@@ -364,8 +364,8 @@ function line_ready(covid) {
 
   // debugger;
 
-  function updateLineChart(covidClean, selectedCountry) {
-    var lineChartData = line_prepareLineChartData(covidClean);
+  function updateLineChart(COVIDClean, selectedCountry) {
+    var lineChartData = line_prepareLineChartData(COVIDClean);
     lineChartData = lineChartData[selectedCountry];
 
     xScale.domain(d3.extent(lineChartData.dates));
@@ -391,6 +391,6 @@ function line_ready(covid) {
 }
 
 // Load data.
-d3.csv("../data/owid-covid-data.csv", type).then((res) => {
+d3.csv("../data/owid-COVID-data.csv", type).then((res) => {
   line_ready(res);
 });

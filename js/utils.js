@@ -126,4 +126,39 @@ var Months = {
 };
 
 const map1_color = d3.interpolateRgb("yellow", "red");
-const map2_color = d3.interpolateRgb("#C5DED7", "#588E84");
+const map2_color = d3.interpolateRgb("#C5DED7", "#215c51");
+
+const color = {
+  Asia: 0,
+  Europe: 1,
+  Africa: 2,
+  "North America": 3,
+  "South America": 4,
+  Oceania: 5,
+};
+
+const ContColor = [
+  "#E03426",
+  "#FC719E",
+  "#CE69BE",
+  "#1BA3C6",
+  "#F89218",
+  "#A3B627",
+];
+
+const ContColorDict = {
+  Asia: "#E03426",
+  "North America": "#FC719E",
+  "South America": "#CE69BE",
+  Europe: "#1BA3C6",
+  Africa: "#F89218",
+  Oceania: "#A3B627",
+};
+
+const legend_html = swatches({
+  color: d3.scaleOrdinal(
+    ["Asia", "North America", "South America", "Europe", "Africa", "Oceania"],
+    ContColor
+  ),
+  columns: "180px",
+});

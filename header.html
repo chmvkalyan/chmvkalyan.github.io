@@ -3,51 +3,74 @@
     <a href="/">
       <img src="images/UIUC Logo.png" alt="logo" width="20%" />
     </a>
-    The UIUC's Narrative Visualization for COVID-19 Tracking
+    The UIUC's Narrative Visualization on COVID-19
   </h1>
-  <marquee style="text-align: center" scrollamount="12" loop="7">
+  <marquee style="text-align: center" scrollamount="9" loop="7">
     <strong>Note:</strong>
-    This Narrative Visualization has been created as part of University's
-    Semester Project. It focuses on the COVID data as of August first week,
-    2021.
+    This Narrative Visualization has been created as part of University's Summer
+    2021 Project. It focuses on the COVID data as of August first week, 2021.
   </marquee>
 </div>
-<div class="top-navigation"><p>.</p></div>
-<div align="center" class="buttons1">
-  <div class="myButtonLabel">
-    <strong>Global Insights</strong>
-  </div>
-  <button onclick="document.location='index.html'" class="mybutton">
-    <strong>Counts Over Time</strong>
-  </button>
-  <button onclick="document.location='scatter.html'" class="mybutton">
-    <strong>Population <br />vs. <br />Cases</strong>
-  </button>
-  <button onclick="document.location='maps2.html'" class="mybutton">
-    <strong>Hotspots</strong>
-  </button>
-  <button onclick="document.location='maps1.html'" class="mybutton">
-    <strong>Vaccinations</strong>
-  </button>
-  <button onclick="document.location='bar.html'" class="mybutton">
-    <strong
-      >Vaccinations in <br />
-      Top 50 Countries</strong
-    >
-  </button>
-</div>
 
-<div align="center" class="buttons2">
-  <div class="myButtonLabel">
-    <strong>USA Insights</strong>
-  </div>
-  <button onclick="document.location='us_map1.html'" class="mybutton">
-    <strong>
-      Vaccinations across <br />
-      County
-    </strong>
-  </button>
-  <button onclick="document.location='us_map2.html'" class="mybutton">
-    <strong> Risk Analysis </strong>
-  </button>
-</div>
+<div class="top-navigation"><p>.</p></div>
+
+<table>
+  <tr>
+    <td>
+      <div class="myButtonLabel">
+        <strong>Global Insights</strong>
+        <i class="fas fa-angle-double-right"></i>
+      </div>
+    </td>
+
+    <td>
+      <button onclick="document.location='index.html'" class="mybutton">
+        <strong>Counts Over Time</strong>
+      </button>
+    </td>
+    <td>
+      <button onclick="document.location='scatter.html'" class="mybutton">
+        <strong>Population <br />vs. <br />Cases</strong>
+      </button>
+    </td>
+    <td>
+      <button onclick="document.location='maps2.html'" class="mybutton">
+        <strong>Hotspots</strong>
+      </button>
+    </td>
+    <td>
+      <button onclick="document.location='maps1.html'" class="mybutton">
+        <strong>Vaccinations</strong>
+      </button>
+    </td>
+    <td>
+      <button onclick="document.location='bar.html'" class="mybutton">
+        <strong
+          >Vaccinations in <br />
+          Top 50 Countries</strong
+        >
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="myButtonLabel">
+        <strong>USA Insights</strong>
+        <i class="fas fa-angle-double-right"></i>
+      </div>
+    </td>
+    <td>
+      <button onclick="document.location='us_map1.html'" class="mybutton">
+        <strong>
+          Vaccinations across <br />
+          Counties
+        </strong>
+      </button>
+    </td>
+    <td>
+      <button onclick="document.location='us_map2.html'" class="mybutton">
+        <strong> Risk Analysis </strong>
+      </button>
+    </td>
+  </tr>
+</table>

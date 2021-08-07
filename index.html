@@ -14,21 +14,94 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
+    <script
+      src="https://kit.fontawesome.com/0e87c14f62.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="page-title">
-      <h2>Here comes the title</h2>
-    </div>
+    <div class="about_COVID">
+      <p class="subtitle">COVID-19 Overview</p>
 
-    <div class="description">
-      <p>Some text for the Home Page</p>
-    </div>
+      Coronavirus disease 2019 (COVID-19) is an infectious disease caused by
+      severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). It was first
+      identified in December 2019 in Wuhan, Hubei, China, and has resulted in an
+      ongoing pandemic. The first confirmed case has been traced back to 17
+      November 2019 in Hubei. As of 1 August 2020, more than 17.5 million cases
+      have been reported across 188 countries and territories, resulting in more
+      than 679,000 deaths. More than 10.3 million people have recovered.
+      <a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019"
+        >[Read More]</a
+      >
 
-    <div class="line-chart-legend" align="center"></div>
-    <div class="line-chart-container" width="100%"></div>
-    <script src="js/line_chart.js"></script>
+      <p class="subtitle">COVID-19 Testing is important</p>
+
+      The COVID-19 testing is important to prevent the spread of the virus in
+      the community. Less than three percent of the world population has been
+      tested to date. The testing has mainly been on demand testing (PCR). Two
+      kinds of tests are used to determine COVID-19 infection. 1. The PCR test
+      (polymerase chain reaction test), can be done with a throat swab and
+      determines if you have the infection now. This test is used for those
+      concerned if they have the virus because of symptoms. 2. The Antibody test
+      has growing interest as it can determine if you have been infected with
+      the virus and fought off the disease. Both tests have many false
+      positives, and recent exposure, particularly with the antibody test, may
+      not trigger a positive for one to three weeks. The antibody test is a
+      better test to determine the infectivity rate in the community. Most
+      people seeking a test do so because they have symptoms (PCR) but is not
+      helpful in determining how many in the community have been exposed.
+      <a
+        href="https://www.tampabay.com/opinion/2020/05/11/why-COVID-19-testing-is-important-column/"
+        >[Read More]</a
+      >
+
+      <p class="subtitle">COVID-19 Vaccines are safe</p>
+
+      COVID-19 vaccines were developed using science that has been around for
+      decades. COVID-19 vaccines are not experimental. They went through all the
+      required stages of clinical trials. Extensive testing and monitoring have
+      shown that these vaccines are safe and effective. COVID-19 vaccines have
+      received and continue to undergo the most intensive safety monitoring in
+      history. Learn more about how federal partners are ensuring COVID-19
+      vaccines work.
+      <a
+        href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/vaccine-benefits.html"
+        >[Read More]</a
+      >
+    </div>
+    <div class="content-container">
+      <div class="page-title">
+        <h2>Counts Over Time</h2>
+      </div>
+
+      <div class="description">
+        <p>
+          The following line chart represents the monthly trend of the counts of
+          Tests, Cases, Deaths, and Vaccinations across the chosen Country. Time
+          on X-axis, Counts on Y-axis, and the Color legend indicates the
+          variety of counts. You can choose a country from the drop-down to
+          update monthly trends. Hover over the line / datapoint to see the
+          additional details on a tool tip. <br /><br />
+        </p>
+      </div>
+
+      <div align="center">
+        <div class="form-group row">
+          <label class="col-form-label">Choose Country &nbsp;</label>
+          <select
+            id="selectButton"
+            class="form-select form-select-lg"
+            aria-label=".form-select-lg example"
+          ></select>
+        </div>
+      </div>
+
+      <div class="line-chart-legend" align="center"></div>
+      <div class="line-chart-container" width="100%"></div>
+      <script src="js/line_chart.js"></script>
+    </div>
 
     <div w3-include-html="footer.html"></div>
 

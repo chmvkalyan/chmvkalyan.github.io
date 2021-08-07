@@ -15,23 +15,43 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
+    <script
+      src="https://kit.fontawesome.com/0e87c14f62.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="page-title">
-      <h2>Here comes the title</h2>
-    </div>
+    <div class="content-container">
+      <div class="page-title">
+        <h2>Cases Per Country Over Time</h2>
+      </div>
 
-    <div class="map-description">
-      <p>Some text for the bar chart</p>
-    </div>
+      <div class="description">
+        <p>
+          The below map depicts the geographgic distribution of COVID-19 Cases
+          across the World. The color graident changes from light yellow to dark
+          orange ranging low to high "Cases (Per Million)".
+        </p>
+        <p>
+          While the slider faciliates the option to choose the time frame, the
+          tooltip helps you with more details including - Population, Deaths
+          (per Million), Tests (per Thousand), and Vaccinations (per Hundred).
+        </p>
+        <p>
+          The Countries in the Continents North America, South America and
+          Europe have major hotspots because the Cases (per Million) is higher
+          compared to the Countries in Asia. Hence they appear darker than the
+          highly populated Countries India, and China.
+        </p>
+      </div>
 
-    <div class="slider" align="center">
-      <p class="year" id="year"></p>
-    </div>
+      <div class="slider" align="center">
+        <p class="year" id="year"></p>
+      </div>
 
-    <!-- <div class="content">
+      <!-- <div class="content">
       <div class="month-slider-wrapper">
         <header>
           <ul class="shortcuts">
@@ -58,16 +78,17 @@
       </div>
     </div> -->
 
-    <div class="tooltip">
-      <div class="tip-header">
-        <h3></h3>
-        <h4></h4>
+      <div class="tooltip">
+        <div class="tip-header">
+          <h3></h3>
+          <h4></h4>
+        </div>
+        <div class="tip-body"></div>
       </div>
-      <div class="tip-body"></div>
-    </div>
 
-    <script src="js/maps1.js"></script>
-    <div class="map-container" width="100%" align="center"></div>
+      <script src="js/maps1.js"></script>
+      <div class="map-container" width="100%" align="center"></div>
+    </div>
 
     <div w3-include-html="footer.html"></div>
 

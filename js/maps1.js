@@ -5,14 +5,14 @@ tooltip = d3
   .style("opacity", 0);
 
 const promises = [];
-promises.push(d3.csv("../data/owid-covid-data.csv"));
+promises.push(d3.csv("../data/owid-COVID-data.csv"));
 promises.push(
   d3.json(
     "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
   )
 );
 
-function maps2_filterData(data) {
+function maps1_filterData(data) {
   return data.filter((d) => {
     return (
       d.iso_code &&
@@ -20,13 +20,12 @@ function maps2_filterData(data) {
       d.continent &&
       d.total_cases > 0 &&
       d.total_deaths > 0 &&
-      d.population > 0 &&
-      d.total_vaccinations > 0
+      d.population > 0
     );
   });
 }
 
-function maps2_formatTicks(d) {
+function maps1_formatTicks(d) {
   return d3.format(",.0f")(d);
 }
 
@@ -52,7 +51,7 @@ Promise.all(promises).then(function ready(values) {
   data = data.map(type);
   mapdata = values[1];
 
-  data = maps2_filterData(data);
+  data = maps1_filterData(data);
 
   const dataByCountryByDate = d3.group(
     data,
@@ -124,6 +123,28 @@ Promise.all(promises).then(function ready(values) {
     .attr("class", "countries")
     .attr("d", path);
 
+  // var labels = svg.selectAll("text.label").data(mapdata);
+
+  // labels.enter().;
+
+  // labels
+  //   .attr("x", function (d) {
+  //     return projection(d3.geo.centroid(d))[0];
+  //   })
+  //   .attr("y", function (d) {
+  //     return projection(d3.geo.centroid(d))[1];
+  //   })
+  //   .attr("text-anchor", function (d, i) {
+  //     // Randomly align the label
+  //     var idx = Math.round(3 * Math.random());
+  //     return ["start", "middle", "end"][idx];
+  //   })
+  //   .text(function (d) {
+  //     return d.properties.admin;
+  //   });
+
+  // labels.exit().remove();
+
   var num_legend = 9;
   const legendScale = d3.scaleLinear().domain([0, 1]).range([0, 1]);
   var legend = svg.append("g").attr("id", "legend");
@@ -157,7 +178,7 @@ Promise.all(promises).then(function ready(values) {
     .style("text-anchor", "middle")
     .text(function (d, i) {
       if (i % 2 == 0) {
-        var text = maps2_formatTicks((max_cases * i) / num_legend);
+        var text = maps1_formatTicks((max_cases * i) / num_legend);
       } else {
         var text = "";
       }
@@ -181,22 +202,22 @@ Promise.all(promises).then(function ready(values) {
         TipData = d.values.get(dates_range[idx]);
 
         bodyData = [
-          ["Population", maps2_formatTicks(TipData.population)],
+          ["Population", maps1_formatTicks(TipData.population)],
           [
             "Cases (per Million)",
-            maps2_formatTicks(TipData.total_cases_per_million),
+            maps1_formatTicks(TipData.total_cases_per_million),
           ],
           [
             "Deaths (per Million)",
-            maps2_formatTicks(TipData.total_deaths_per_million),
+            maps1_formatTicks(TipData.total_deaths_per_million),
           ],
           [
             "Tests (per Thousand)",
-            maps2_formatTicks(TipData.total_tests_per_thousand),
+            maps1_formatTicks(TipData.total_tests_per_thousand),
           ],
           [
             "Vaccinations (per Hundred)",
-            maps2_formatTicks(TipData.total_vaccinations_per_hundred),
+            maps1_formatTicks(TipData.total_vaccinations_per_hundred),
           ],
         ];
         // console.log(bodyData);
@@ -231,7 +252,6 @@ Promise.all(promises).then(function ready(values) {
     tip.transition().style("opacity", 0.98);
 
     tip.select("h3").html(`${country} (${TipData.continent})`);
-    // tip.select("h4").html(`${TipData.continent}`);
 
     d3.select(".tip-body")
       .selectAll("p")
@@ -285,6 +305,8 @@ Promise.all(promises).then(function ready(values) {
   }
 
   dates_range = Array.from(dataByCountryByDate.get("AFG").keys());
+
+  // debugger;
 
   var slider = d3
     .select(".slider")

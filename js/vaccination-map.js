@@ -4,7 +4,7 @@ var width = 1560,
     .select("#us")
     .append("div")
     .style("margin-left", "0%")
-    .style("margin-top", "0%")
+    .style("margin-top", "5%")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -14,13 +14,66 @@ var width = 1560,
   path = d3.geoPath().projection(projection);
 function ready(t, e, a) {
   drawMap(e, a), drawBar();
+
+  // Draw Annotations
+  //arrow for annotation
+  const annots = svg.append("g").attr("class", "annotations");
+
+  annots
+    .append("svg:defs")
+    .append("svg:marker")
+    .attr("id", "triangle")
+    .attr("refX", 10)
+    .attr("refY", 6)
+    .attr("markerWidth", 500)
+    .attr("markerHeight", 500)
+    .attr("markerUnits", "userSpaceOnUse")
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M 0 0 12 6 0 12 3 6")
+    .style("fill", "black");
+
+  // //line for annotation
+  annots
+    .append("line")
+    .attr("x2", 510)
+    .attr("y2", 580)
+    .attr("x1", 540)
+    .attr("y1", 545)
+    .attr("stroke-width", 2)
+    .attr("stroke", "black")
+    .attr("marker-end", "url(#triangle)");
+
+  // text for annotation
+  annots
+    .append("text")
+    .attr("x", 500)
+    .attr("y", 520)
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 11)
+    .style("fill", "black")
+    .text(
+      "At least one does of vaccine has been administered to 58.2% of all ages,"
+    );
+
+  annots
+    .append("text")
+    .attr("x", 500)
+    .attr("y", 535)
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 11)
+    .style("fill", "black")
+    .text("all doses have been rendered to 49.9% of all ages.");
 }
 function drawMap(t, e) {
-  var a = [20, 40, 60, 80, 100],
-    n = ["20", "40", "60", "80", "100"],
+  // var a = [20, 40, 60, 80, 100],
+  var a = [100, 80, 60, 40, 20],
+    // n = ["20", "40", "60", "80", "100"],
+    n = ["100", "80", "60", "40", "20"],
     r = d3
       .scaleOrdinal()
-      .range(["#B6D6CD", "#92BDB2", "#70A397", "#4F8B7D", "#2E7265"]),
+      // .range(["#B6D6CD", "#92BDB2", "#70A397", "#4F8B7D", "#2E7265"]),
+      .range(["#2E7265", "#4F8B7D", "#70A397", "#92BDB2", "#B6D6CD"]),
     s = {},
     l = {},
     u = {},
@@ -36,7 +89,7 @@ function drawMap(t, e) {
     o = d3
       .select("body")
       .append("div")
-      .attr("class", "tooltip")
+      .attr("class", "tooltip map")
       .style("opacity", 0)
       .style("height", "150px")
       .style("width", "220px");
@@ -198,8 +251,9 @@ function drawMap(t, e) {
       .data(a)
       .enter()
       .append("g")
-      .attr("class", "legend"),
-    c = 130;
+      .attr("class", "legend")
+      .attr("transform", "translate(-80,-550)"),
+    c = 70;
   a
     .append("rect")
     .attr("x", function (t, e) {
@@ -207,7 +261,7 @@ function drawMap(t, e) {
     })
     .attr("y", 550)
     .attr("width", c)
-    .attr("height", 20)
+    .attr("height", 10)
     .style("fill", function (t, e) {
       return r(t);
     })
@@ -215,9 +269,9 @@ function drawMap(t, e) {
     a
       .append("text")
       .attr("x", function (t, e) {
-        return width / 2 - e * c - c;
+        return width / 2 - e * c - c + 30;
       })
-      .attr("y", 590)
+      .attr("y", 575)
       .text(function (t, e) {
         return n[e];
       });

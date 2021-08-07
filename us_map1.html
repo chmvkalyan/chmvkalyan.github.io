@@ -20,45 +20,66 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style/index.css" />
+    <script
+      src="https://kit.fontawesome.com/0e87c14f62.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="page-title">
-      <h2>Vaccinations across County</h2>
-    </div>
+    <div class="content-container">
+      <div class="page-title">
+        <h2>Vaccinations across County</h2>
+      </div>
 
-    <div class="description">
-      About 193.8 million people have received at least one dose of a Covid-19
-      vaccine, including about 165.9 million people who have been fully
-      vaccinated by Johnson & Johnson’s single-dose vaccine or the two-dose
-      series made by Pfizer-BioNTech and Moderna. <br />
-      About 70.6 percent of adults have received at least one shot. President
-      Biden set a goal on May 4 of reaching 70 percent of adults by July 4, but
-      it took almost a month extra to reach that national target. <br />
-      Speed isn’t the only priority for the country’s vaccination campaign. The
-      Biden administration has also committed to distributing shots equitably to
-      the communities most affected by the pandemic. <br />
-      Yet more than seven months into the rollout, the most socially vulnerable
-      counties in the U.S. have a lower vaccination rate on average than the
-      nation’s least vulnerable. The majority of the most disadvantaged counties
-      with the fewest fully vaccinated people are in the South, while the most
-      vaccinated, least vulnerable counties are in the Midwest and Northeast.
+      <div class="description">
+        <p>
+          The below map depicts the geographgic distribution of vaccinations
+          across counties in the United States of America. Here, plotting has
+          been done on the "Fully Vaccinated Percentages" among the age groups
+          12 and up, 18 and up, 65 and up, and All Ages. <br />
+        </p>
+        <p>
+          About 193.8 million people have received at least one dose of a
+          COVID-19 vaccine, including about 165.9 million people who have been
+          fully vaccinated by Johnson & Johnson’s single-dose vaccine or the
+          two-dose series made by Pfizer-BioNTech and Moderna. About 70.6
+          percent of adults have received at least one shot. President Biden set
+          a goal on May 4 of reaching 70 percent of adults by July 4, but it
+          took almost a month extra to reach that national target. <br />
+        </p>
+        <p>
+          Speed isn’t the only priority for the country’s vaccination campaign.
+          The Biden administration has also committed to distributing shots
+          equitably to the communities most affected by the pandemic. Yet more
+          than seven months into the rollout, the most socially vulnerable
+          counties in the U.S. have a lower vaccination rate on average than the
+          nation’s least vulnerable. The majority of the most disadvantaged
+          counties with the fewest fully vaccinated people are in the South,
+          while the most vaccinated, least vulnerable counties are in the
+          Midwest and Northeast.
+          <br />
+        </p>
+        <p>
+          Counties are ranked according to the Social Vulnerability Index, a
+          C.D.C. indicator used in public health crises that is based on
+          socioeconomic status, housing, transportation, race, ethnicity and
+          language. Each county’s vaccination rate is its share of all residents
+          that have been fully vaccinated, a figure that does not reflect those
+          who have only received one dose of a two-shot vaccine.
+        </p>
+      </div>
+
+      <div id="us"></div>
       <br />
-      Counties are ranked according to the Social Vulnerability Index, a C.D.C.
-      indicator used in public health crises that is based on socioeconomic
-      status, housing, transportation, race, ethnicity and language. Each
-      county’s vaccination rate is its share of all residents that have been
-      fully vaccinated, a figure that does not reflect those who have only
-      received one dose of a two-shot vaccine.
+      <div id="bar">
+        <h4 class="title" style="text-align: center">
+          United States Vaccinations
+        </h4>
+      </div>
+      <script type="text/javascript" src="js/vaccination-map.js"></script>
     </div>
-
-    <div id="us"></div>
-    <br />
-    <div id="bar">
-      <h4 style="text-align: center">United States vaccinations</h4>
-    </div>
-    <script type="text/javascript" src="js/vaccination-map.js"></script>
 
     <div w3-include-html="footer.html"></div>
 

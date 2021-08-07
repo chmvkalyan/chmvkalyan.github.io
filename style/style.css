@@ -1,18 +1,11 @@
-svg {
-  border: 3px solid black;
+.content-container {
+  border: 3px solid #803432;
+  margin-top: 50px;
 }
 
 text {
   font-family: "Avenir", sans-serif;
 }
-
-/* .axis .domain {
-    stroke: none;
-}
-
-.x line {
-    stroke: white;
-} */
 
 .tick text {
   font-size: 1.2em;
@@ -37,17 +30,31 @@ text.mylabel {
   font-weight: bold;
 }
 
+table {
+  width: 100%;
+}
+table td:first-child {
+  width: 20%;
+  vertical-align: middle;
+}
+
+table td {
+  width: 16%;
+}
+
 .mybutton {
   outline: none;
   background-color: #10294b;
   color: #f15735;
   /* padding: 3px 10px; */
   font-family: Avenir;
-  font-size: 1.5em;
+  font-size: 1.55em;
+  /* -webkit-text-stroke: 0.1px white; */
   transition: all 200ms;
   cursor: pointer;
-  width: 15%;
+  width: 100%;
   min-height: 100px;
+  float: left;
 }
 
 .mybutton:hover {
@@ -62,12 +69,12 @@ text.mylabel {
   outline: none;
   /* background-color: #10294b; */
   color: #f15735;
-  /* padding: 3px 10px; */
+  padding-top: 30px;
   font-family: Avenir;
   font-size: 1.5em;
   transition: all 200ms;
   cursor: pointer;
-  width: 15%;
+  width: 100%;
   height: 100px;
   float: left;
   text-align: center;
@@ -75,7 +82,7 @@ text.mylabel {
 
 html {
   max-height: 100%;
-  background: url("../images/background1.jpg");
+  /* background: url("../images/background1.jpg"); */
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.5);
 }
@@ -93,6 +100,8 @@ html.map {
 .top-navigation {
   overflow: hidden;
   background-color: #803432;
+  height: 10px;
+  margin-bottom: 10px;
 }
 /* Style the topnav links */
 .top-navigation a {
@@ -119,6 +128,10 @@ html.map {
   text-align: center;
 }
 
+a {
+  color: darkred;
+}
+
 .tooltip {
   position: fixed;
   opacity: 0;
@@ -133,6 +146,10 @@ html.map {
   font-size: 1em;
 }
 
+.tooltip.map svg {
+  border: none !important;
+}
+
 .tip-header {
   font-family: "Avenir", sans-serif;
   font-size: 1.5em !important;
@@ -141,6 +158,10 @@ html.map {
 .tip-body {
   font-family: "Avenir", sans-serif;
   font-size: 1.5em !important;
+}
+
+.tooltip h3 {
+  text-align: center;
 }
 
 h3,
@@ -153,6 +174,12 @@ h4 {
 
 h4 {
   font-weight: normal;
+}
+
+h4.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px !important;
 }
 
 .tip-info {
@@ -182,12 +209,20 @@ h4 {
 }
 
 .line-chart-legend {
-  max-width: 80%;
+  max-width: 70%;
   align-self: center;
   margin-left: auto;
+  font-size: 1.5em;
 }
 
 .scatter-plot-legend {
+  max-width: 80%;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar-chart-legend {
   max-width: 80%;
   align-self: center;
   margin-left: auto;
@@ -202,14 +237,14 @@ hr {
 h1#logo {
   border: 10px solid #10294b;
   font-family: Constantia;
-  font-size: 3em;
+  font-size: 3.65em;
   font-weight: bold;
   color: #7a0923;
 }
 
-a:link {
+/* a:link {
   color: #7a0923;
-}
+} */
 
 .footer {
   padding-left: 50px;
@@ -229,13 +264,101 @@ a:link {
 .page-title h2 {
   text-align: center;
   font-weight: bold;
-  padding-top: 50px;
+  padding-top: 10px;
   color: #803432;
 }
 
 .description {
-  padding-left: 50px;
-  color: #063c75;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 30px;
+  color: #042891;
   font-family: Cambria;
   font-size: 1.3em;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.about_COVID {
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 30px;
+  color: black;
+  font-family: Cambria;
+  font-size: 1.3em;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.subtitle {
+  /* padding-left: 150px; */
+  padding-right: 150px;
+  padding-top: 30px;
+  color: black;
+  font-family: Cambria;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.page-title {
+  clear: both;
+}
+
+.slider {
+  padding: 25px;
+}
+
+.arrow {
+  width: 50px;
+  float: right;
+}
+
+mark5 {
+  background-color: #930e6e;
+  color: white;
+  padding: 1px;
+}
+
+mark4 {
+  background-color: #e03320;
+  color: white;
+  padding: 1px;
+}
+mark3 {
+  background-color: #ff8104;
+  color: white;
+  padding: 1px;
+}
+mark2 {
+  background-color: #f0c300;
+  color: white;
+  padding: 1px;
+}
+mark1 {
+  background-color: #a4c96f;
+  color: white;
+  padding: 1px;
+}
+
+ul,
+li {
+  margin-left: 80px;
+  padding-left: 30px;
+}
+
+.year {
+  font-size: large;
+  font-weight: bold;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

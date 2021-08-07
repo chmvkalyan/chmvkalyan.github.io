@@ -15,59 +15,61 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
+    <script
+      src="https://kit.fontawesome.com/0e87c14f62.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="page-title">
-      <h2>Here comes the title</h2>
-    </div>
-
-    <div class="map-description">
-      <p>Some text for the bar chart</p>
-    </div>
-
-    <div class="slider" align="center">
-      <p class="year" id="year"></p>
-    </div>
-
-    <!-- <div class="content">
-      <div class="month-slider-wrapper">
-        <header>
-          <ul class="shortcuts">
-            <li data-min-range="12">12 months</li>
-            <li data-min-range="6">6 months</li>
-            <li data-min-range="3">3 months</li>
-            <li class="active" data-min-range="1">1 month</li>
-          </ul>
-          <h3>Date range:</h3>
-        </header>
-        <div id="month-slider" class="slider"></div>
+    <div class="content-container">
+      <div class="page-title">
+        <h2>Vaccinations Per Country Over Time</h2>
       </div>
 
-      <div class="sample-submit-data">
-        <h4>Data to use when submitting the form:</h4>
+      <div class="description">
         <p>
-          <label for="month-range-min">Min:</label>
-          <input name="month-range-min" type="text" value="" />
+          The below map depicts the geographic distribution of vaccinations
+          across the World. The color gradient changes from lighter pale green
+          to darker pale green ranging from low to high "Vaccinations (per
+          Hunderd)". Slider faciliates the option to choose a time frame.
         </p>
         <p>
-          <label for="month-range-min">Max:</label>
-          <input name="month-range-max" type="text" value="" />
+          More than 4.36 billion vaccines doses have been administered
+          worldwide, equal to 57 doses for every 100 people. There is already a
+          stark gap between vaccination programs in different countries, as this
+          map shows.
+        </p>
+        <p>
+          A vaccinated person refers to someone who has received at least one
+          dose of a vaccine, and a fully vaccinated person has received all
+          required doses of a vaccine. For the Pfizer-BioNTech vaccine, a person
+          who is “fully vaccinated” has received two doses.
+        </p>
+        <p>
+          While vaccine doses remain relatively scarce globally, most countries
+          have focused their early vaccination efforts on priority groups like
+          the clinically vulnerable; people in their 60s, 70s and older; and
+          front-line workers, like doctors and nurses.
         </p>
       </div>
-    </div> -->
 
-    <div class="tooltip">
-      <div class="tip-header">
-        <h3></h3>
-        <h4></h4>
+      <div class="slider" align="center">
+        <p class="year" id="year"></p>
       </div>
-      <div class="tip-body"></div>
-    </div>
 
-    <script src="js/maps2.js"></script>
-    <div class="map-container" width="100%" align="center"></div>
+      <div class="tooltip">
+        <div class="tip-header">
+          <h3></h3>
+          <h4></h4>
+        </div>
+        <div class="tip-body"></div>
+      </div>
+
+      <script src="js/maps2.js"></script>
+      <div class="map-container" width="100%" align="center"></div>
+    </div>
 
     <div w3-include-html="footer.html"></div>
 

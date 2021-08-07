@@ -14,11 +14,62 @@ var width = 1560,
   path = d3.geoPath().projection(projection);
 function ready(e, t, s) {
   drawMap(t, s);
+
+  // Draw Annotations
+  //arrow for annotation
+  const annots = svg.append("g").attr("class", "annotations");
+
+  annots
+    .append("svg:defs")
+    .append("svg:marker")
+    .attr("id", "triangle")
+    .attr("refX", 10)
+    .attr("refY", 6)
+    .attr("markerWidth", 500)
+    .attr("markerHeight", 500)
+    .attr("markerUnits", "userSpaceOnUse")
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M 0 0 12 6 0 12 3 6")
+    .style("fill", "black");
+
+  // //line for annotation
+  annots
+    .append("line")
+    .attr("x2", 640)
+    .attr("y2", 430)
+    .attr("x1", 520)
+    .attr("y1", 545)
+    .attr("stroke-width", 2)
+    .attr("stroke", "black")
+    .attr("marker-end", "url(#triangle)");
+
+  // text for annotation
+  annots
+    .append("text")
+    .attr("x", 350)
+    .attr("y", 560)
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 11)
+    .style("fill", "black")
+    .text(
+      "The situation in the States under South Atlantic, and South Central Census Divisions is highly vulnerable,"
+    );
+
+  annots
+    .append("text")
+    .attr("x", 350)
+    .attr("y", 575)
+    .attr("font-family", "Trebuchet MS")
+    .attr("font-size", 11)
+    .style("fill", "black")
+    .text("as they have the most number of extremely high risk counties.");
 }
 function drawMap(e, t) {
   var s = d3
       .scaleThreshold()
-      .domain(["10", "20", "30", "40", "50"])
+      //   .domain(["10", "20", "30", "40", "50"])
+      .domain([2, 5, 15, 45, 1000])
       .range(["#A4C96F", "#F0C300", "#FF8104", "#E03320", "#930E6E"]),
     a = {},
     n = {

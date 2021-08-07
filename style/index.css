@@ -28,12 +28,12 @@ div.tooltip {
   border: 1px solid #989898;
   pointer-events: none;
 }
-p {
+/* p {
   width: 150px;
   padding: 4px;
   margin-left: 4px;
   color: #fff;
-}
+} */
 .ticks {
   font-size: 10px;
 }

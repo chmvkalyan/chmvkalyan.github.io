@@ -14,38 +14,41 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
+    <script
+      src="https://kit.fontawesome.com/0e87c14f62.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="page-title">
-      <h2>Here comes the title</h2>
-    </div>
-
-    <div class="line-description">
-      <p>Some text for the line char</p>
-    </div>
-
-    <div class="tooltip">
-      <div class="tip-header" align="center">
-        <h3></h3>
+    <div class="content-container">
+      <div class="page-title">
+        <h2>Population Vs. Cases</h2>
       </div>
-    </div>
 
-    <div align="center">
-      <div class="form-group row">
-        <label class="col-form-label">Choose Country &nbsp;</label>
-        <select
-          id="selectButton"
-          class="form-select form-select-lg"
-          aria-label=".form-select-lg example"
-        ></select>
+      <div class="description">
+        <p>
+          The following scatter plot represents the Population versus COVID-19
+          total cases reported worldwide. Population on X-axis, Total cases on
+          Y-axis, Color indicates the Continent, and Size of the circle
+          indicates the Count of deaths. Hover over the datapoints (circles) to
+          see the additional details through the tool tip option. Annotation
+          describes that the Top countries that are highly impacted reporting
+          highest number of total cases and deaths in the world so far.<br /><br />
+        </p>
       </div>
-    </div>
 
-    <div class="scatter-plot-legend" width="100%"></div>
-    <div class="scatter-plot-container" width="100%"></div>
-    <script src="js/scatter_plot.js"></script>
+      <div class="tooltip">
+        <div class="tip-header" align="center">
+          <h3></h3>
+        </div>
+      </div>
+
+      <div class="scatter-plot-legend" width="100%"></div>
+      <div class="scatter-plot-container" width="100%"></div>
+      <script src="js/scatter_plot.js"></script>
+    </div>
 
     <div w3-include-html="footer.html"></div>
 

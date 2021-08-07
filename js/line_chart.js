@@ -7,14 +7,16 @@ tooltip = d3
 // Type conversion.
 const colorScheme = ["#ff2200", "#0d0000", "#002aff", "#2e9930"];
 
-const legend_html = swatches({
+const line_legend_html = swatches({
   color: d3.scaleOrdinal(
-    ["Cases", "Deaths", "Tests", "Vaccinations"],
-    colorScheme
+    // ["Cases", "Deaths", "Tests", "Vaccinations"],
+    ["Tests", "Cases", "Deaths", "Vaccinations"],
+    [colorScheme[2], colorScheme[0], colorScheme[1], colorScheme[3]]
   ),
   columns: "180px",
 });
-d3.select(".line-chart-legend").html(legend_html);
+
+d3.select(".line-chart-legend").html(line_legend_html);
 
 // debugger;
 
@@ -141,12 +143,12 @@ function getCountries(data) {
 }
 
 // Main function.line
-function line_ready(covid) {
+function line_ready(COVID) {
   // Data prep.
-  const covidClean = line_filterData(covid);
+  const COVIDClean = line_filterData(COVID);
 
   // List of countries
-  const countries = getCountries(covidClean);
+  const countries = getCountries(COVIDClean);
 
   var selectedCountry = "United States";
   // add the options to the button
@@ -165,12 +167,12 @@ function line_ready(covid) {
   d3.select("#selectButton").on("change", function (d) {
     var selectedOption = d3.select(this).property("value");
     selectedCountry = countries[parseInt(selectedOption)];
-    updateLineChart(covidClean, selectedCountry);
+    updateLineChart(COVIDClean, selectedCountry);
   });
 
   // debugger;
 
-  var lineChartData = line_prepareLineChartData(covidClean, selectedCountry);
+  var lineChartData = line_prepareLineChartData(COVIDClean, selectedCountry);
 
   // Margin convention.
   const parentDiv = d3.select(".line-chart-container");
@@ -315,9 +317,9 @@ function line_ready(covid) {
     .on("mousemove", mousemove)
     .on("mouseout", mouseout);
 
-  function updateLineChart(covidClean, selectedCountry) {
+  function updateLineChart(COVIDClean, selectedCountry) {
     // debugger;
-    lineChartData = line_prepareLineChartData(covidClean, selectedCountry);
+    lineChartData = line_prepareLineChartData(COVIDClean, selectedCountry);
 
     xScale.domain(d3.extent(lineChartData.dates));
     yScale.domain([lineChartData.yMin, lineChartData.yMax]);
@@ -374,6 +376,6 @@ function line_ready(covid) {
 }
 
 // Load data.
-d3.csv("../data/owid-covid-data.csv", type).then((res) => {
+d3.csv("../data/owid-COVID-data.csv", type).then((res) => {
   line_ready(res);
 });

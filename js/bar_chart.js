@@ -1,3 +1,5 @@
+d3.select(".bar-chart-legend").html(legend_html);
+
 // Type conversion.
 function bar_type(d) {
   const date = parseDate(d.release_date);
@@ -25,16 +27,17 @@ function bar_prepareBarChartData(data) {
 function bar_formatTicks(d) {
   return d3
     .format("~s")(d)
-    .replace("M", " mil")
-    .replace("G", " bil")
-    .replace("T", " tril");
+    .replace("M", " Million")
+    .replace("G", " Billion")
+    .replace("T", " Trillion")
+    .replace("k", " Thousand");
 }
 
 // Main function.bar_
-function bar_ready(covid) {
+function bar_ready(COVID) {
   // Data prep.
-  const covidClean = bar_filterData(covid);
-  const barChartData = bar_prepareBarChartData(covidClean)
+  const COVIDClean = bar_filterData(COVID);
+  const barChartData = bar_prepareBarChartData(COVIDClean)
     .sort((a, b) => {
       return b.total_vaccinations - a.total_vaccinations;
     })
@@ -43,7 +46,7 @@ function bar_ready(covid) {
   // Margin convention.
   const parentDiv = d3.select(".bar-chart-container");
   //   const svg = d3.select(parentDiv).append("svg");
-  const margin = { top: 80, right: 80, bottom: 80, left: 80 };
+  const margin = { top: 80, right: 80, bottom: 150, left: 80 };
   const width =
     parentDiv._groups[0][0].clientWidth - margin.left - margin.right;
   const height = 600 - margin.top - margin.bottom;
@@ -67,13 +70,9 @@ function bar_ready(covid) {
   };
   var mousemove = function (event, d) {
     Tooltip.html(
-      "<p>" +
-        d.location +
-        "<br />" +
-        d.total_vaccinations +
-        "<br />" +
-        " vaccinations" +
-        "</p>"
+      `<p>
+        <strong>${d.location} </strong> <br />
+        ${d3.format(",.0f")(d.total_vaccinations)} <br />vaccinations</p>`
     )
       .style("left", event.pageX + 10 + "px")
       .style("top", event.pageY - 50 + "px");
@@ -132,48 +131,48 @@ function bar_ready(covid) {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   // Draw legends.
-  const legends = svg.append("g").attr("class", "legends");
+  // const legends = svg.append("g").attr("class", "legends");
 
-  legends
-    .append("circle")
-    .attr("cx", 1000)
-    .attr("cy", 60)
-    .attr("r", 6)
-    .style("fill", "#008B8B");
+  // legends
+  //   .append("circle")
+  //   .attr("cx", 1000)
+  //   .attr("cy", 60)
+  //   .attr("r", 6)
+  //   .style("fill", "#008B8B");
 
-  legends
-    .append("circle")
-    .attr("cx", 1000)
-    .attr("cy", 90)
-    .attr("r", 6)
-    .style("fill", "#FB7E81");
-  legends
-    .append("circle")
-    .attr("cx", 1000)
-    .attr("cy", 120)
-    .attr("r", 6)
-    .style("fill", "#9E0508");
-  legends
-    .append("text")
-    .attr("x", 1020)
-    .attr("y", 60)
-    .text("Total Vaccinations - 100M +")
-    .style("font-size", "15px")
-    .attr("alignment-baseline", "middle");
-  legends
-    .append("text")
-    .attr("x", 1020)
-    .attr("y", 90)
-    .text("Total Vaccinations - 10M-100M")
-    .style("font-size", "15px")
-    .attr("alignment-baseline", "middle");
-  legends
-    .append("text")
-    .attr("x", 1020)
-    .attr("y", 120)
-    .text("Total Vaccinations - < 10M")
-    .style("font-size", "15px")
-    .attr("alignment-baseline", "middle");
+  // legends
+  //   .append("circle")
+  //   .attr("cx", 1000)
+  //   .attr("cy", 90)
+  //   .attr("r", 6)
+  //   .style("fill", "#FB7E81");
+  // legends
+  //   .append("circle")
+  //   .attr("cx", 1000)
+  //   .attr("cy", 120)
+  //   .attr("r", 6)
+  //   .style("fill", "#9E0508");
+  // legends
+  //   .append("text")
+  //   .attr("x", 1020)
+  //   .attr("y", 60)
+  //   .text("Total Vaccinations - 100M +")
+  //   .style("font-size", "15px")
+  //   .attr("alignment-baseline", "middle");
+  // legends
+  //   .append("text")
+  //   .attr("x", 1020)
+  //   .attr("y", 90)
+  //   .text("Total Vaccinations - 10M-100M")
+  //   .style("font-size", "15px")
+  //   .attr("alignment-baseline", "middle");
+  // legends
+  //   .append("text")
+  //   .attr("x", 1020)
+  //   .attr("y", 120)
+  //   .text("Total Vaccinations - < 10M")
+  //   .style("font-size", "15px")
+  //   .attr("alignment-baseline", "middle");
 
   // Draw Annotations
   //arrow for annotation
@@ -191,17 +190,17 @@ function bar_ready(covid) {
     .attr("orient", "auto")
     .append("path")
     .attr("d", "M 0 0 12 6 0 12 3 6")
-    .style("fill", "#739AC5");
+    .style("fill", "black");
 
   // //line for annotation
   annots
     .append("line")
-    .attr("x1", 100)
-    .attr("y1", 120)
-    .attr("x2", 25)
-    .attr("y2", 10)
+    .attr("x1", xScale("Germany"))
+    .attr("y1", yScale(145e6))
+    .attr("x2", xScale("India"))
+    .attr("y2", yScale(1.6e9))
     .attr("stroke-width", 2)
-    .attr("stroke", "#739AC5")
+    .attr("stroke", "black")
     .attr("marker-end", "url(#triangle)");
 
   // // text for annotation
@@ -210,10 +209,10 @@ function bar_ready(covid) {
     .attr("x", 110)
     .attr("y", 120)
     .attr("font-family", "Trebuchet MS")
-    .attr("font-size", 14)
-    .style("fill", "#739AC5")
+    .attr("font-size", 15)
+    .style("fill", "black")
     .text(
-      "So far 4 nations China, India, USA, Brazil have vaccinated 100M+ people."
+      "So far 4 nations China, India, USA, and Brazil have vaccinated 100M+ people."
     );
   // annots
   //   .append("text")
@@ -241,7 +240,7 @@ function bar_ready(covid) {
     .attr("transform", `translate(0, ${-margin.top / 2})`)
     .append("text");
 
-  header.append("tspan").text("Total vaccinations as on 31st July 2021");
+  header.append("tspan").text("Total vaccinations");
 
   header
     .append("tspan")
@@ -273,13 +272,7 @@ function bar_ready(covid) {
   yAxisDraw.selectAll("text").attr("dx", "-0.6em");
 
   function myColor(data) {
-    if (data.total_vaccinations > 10e7) {
-      return "#008B8B";
-    } else if (data.total_vaccinations > 10e6) {
-      return "#FB7E81";
-    } else {
-      return "#9E0508";
-    }
+    return ContColorDict[data];
   }
 
   // Draw bars.
@@ -296,7 +289,7 @@ function bar_ready(covid) {
     .delay((d, i) => i * 10)
     .attr("width", xScale.bandwidth())
     .attr("height", (d) => height - yScale(d.total_vaccinations))
-    .style("fill", (d) => myColor(d));
+    .style("fill", (d) => myColor(d.continent));
 
   d3.selectAll("rect")
     .on("mouseover", mouseover)

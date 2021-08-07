@@ -5,14 +5,14 @@ tooltip = d3
   .style("opacity", 0);
 
 const promises = [];
-promises.push(d3.csv("../data/owid-covid-data.csv"));
+promises.push(d3.csv("../data/owid-COVID-data.csv"));
 promises.push(
   d3.json(
     "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
   )
 );
 
-function maps1_filterData(data) {
+function maps2_filterData(data) {
   return data.filter((d) => {
     return (
       d.iso_code &&
@@ -26,7 +26,7 @@ function maps1_filterData(data) {
   });
 }
 
-function maps1_formatTicks(d) {
+function maps2_formatTicks(d) {
   return d3.format(",.0f")(d);
 }
 
@@ -58,7 +58,7 @@ Promise.all(promises).then(function ready(values) {
   data = data.map(type);
   mapdata = values[1];
 
-  data = maps1_filterData(data);
+  data = maps2_filterData(data);
 
   const dataByCountryByDate = d3.group(
     data,
@@ -163,7 +163,7 @@ Promise.all(promises).then(function ready(values) {
     .style("text-anchor", "middle")
     .text(function (d, i) {
       if (i % 2 == 0) {
-        var text = maps1_formatTicks((max_vacc * i) / num_legend);
+        var text = maps2_formatTicks((max_vacc * i) / num_legend);
       } else {
         var text = "";
       }
@@ -182,28 +182,30 @@ Promise.all(promises).then(function ready(values) {
     var TipData, bodyData;
     var country = d.properties.name;
     var idx = dates_range.length - parseInt(slider.property("value"));
+
+    debugger;
     if ("values" in d) {
       if (Array.from(d.values.keys()).includes(dates_range[idx])) {
         TipData = d.values.get(dates_range[idx]);
 
         bodyData = [
-          ["Total Vaccinations", maps1_formatTicks(TipData.total_vaccinations)],
+          ["Total Vaccinations", maps2_formatTicks(TipData.total_vaccinations)],
           [
             "Total Vaccinations (per Hundred)",
-            maps1_formatTicks(TipData.total_vaccinations_per_hundred),
+            maps2_formatTicks(TipData.total_vaccinations_per_hundred),
           ],
-          ["People vaccinated", maps1_formatTicks(TipData.people_vaccinated)],
+          ["People vaccinated", maps2_formatTicks(TipData.people_vaccinated)],
           [
             "People vaccinated (per Hundred)",
-            maps1_formatTicks(TipData.people_vaccinated_per_hundred),
+            maps2_formatTicks(TipData.people_vaccinated_per_hundred),
           ],
           [
             "People fully vaccinated",
-            maps1_formatTicks(TipData.people_fully_vaccinated),
+            maps2_formatTicks(TipData.people_fully_vaccinated),
           ],
           [
             "People fully vaccinated (per Hundred)",
-            maps1_formatTicks(TipData.people_fully_vaccinated_per_hundred),
+            maps2_formatTicks(TipData.people_fully_vaccinated_per_hundred),
           ],
         ];
         // console.log(bodyData);
@@ -294,6 +296,8 @@ Promise.all(promises).then(function ready(values) {
   }
 
   dates_range = Array.from(dataByCountryByDate.get("AFG").keys());
+
+  debugger;
 
   var slider = d3
     .select(".slider")
